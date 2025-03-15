@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="description" content="DreamRunner: Fine-Grained Storytelling Video Generation with Retrieval-Augmented Motion Adaptation">
+	<meta name="description" content="DreamRunner: Fine-Grained Compositional Story-to-Video Video Generation with Retrieval-Augmented Motion Adaptation">
 	<meta name="keywords"
 		content="video,video generation,rag,diffusion,Storytelling video generation,attention,genai">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +49,7 @@
 					<div class="column has-text-centered">
 						<h1 class="title is-1 publication-title">
 							<!-- <span style="color: rgb(237, 178, 13);">C</span><span style="color: rgb(112, 48, 160);">T</span><span style="color: rgb(0, 176, 240);">R</span><span style="color: rgb(215, 49, 136);">L</span>-Adapter -->
-							 <b>DreamRunner</b>: Fine-Grained Storytelling Video Generation <br> with Retrieval-Augmented Motion Adaptation
+							 <b>DreamRunner</b>: Fine-Grained Compositional Story-to-Video Video Generation <br> with Retrieval-Augmented Motion Adaptation
 						</h1>
 						<div class="is-size-5 publication-authors">
 							<span class="author-block">
@@ -235,7 +235,7 @@
 					<div class="content has-text-justified">
 
 						<p>
-							Storytelling video generation (SVG) has recently emerged as a task to create long, multi-motion, multi-scene videos that consistently represent the story described in the input text script. SVG holds great potential for diverse content creation in media and entertainment; however, it also presents significant challenges: (1) objects must exhibit a range of fine-grained, complex motions, (2) multiple objects need to appear consistently across scenes, and (3) subjects may require multiple motions with seamless transitions within a single scene.
+							Storytelling video generation (SVG) aims to produce coherent and visually rich multi-scene videos that follow a structured narrative. Existing methods primarily employ LLM for high-level planning to decompose a story into scene-level descriptions, which are then independently generated and stitched together. However, these approaches struggle with generating high-quality videos aligned with the complex single-scene description, as visualizing such complex description involves coherent composition of multiple characters and events, complex motion synthesis and muti-character customization.
 						</p>
 						<p>
 							To address these challenges, we propose <b>DreamRunner</b>, a novel story-to-video generation method: First, we structure the input script using a large language model (LLM) to facilitate both coarse-grained scene planning as well as fine-grained object-level layout and motion planning. Next, <b>DreamRunner</b> presents retrieval-augmented test-time adaptation to capture target motion priors for objects in each scene, supporting diverse motion customization based on retrieved videos, thus facilitating the generation of new videos with complex, scripted motions. Lastly, we propose a novel spatial-temporal region-based 3D attention and prior injection module SR3AI for fine-grained object-motion binding and frame-by-frame semantic control. We compare <b>DreamRunner</b> with various SVG baselines, demonstrating state-of-the-art performance in character consistency, text alignment, and smooth transitions. Additionally, <b>DreamRunner</b> exhibits strong fine-grained condition-following ability in compositional text-to-video generation, significantly outperforming baselines on T2V-ComBench. Finally, we validate <b>DreamRunner</b>'s robust ability to generate multi-object interactions with qualitative examples.
@@ -361,610 +361,560 @@ the attention and FFN layers in each transformer block (the right part). Note th
 		</div>
 	<section>
 
-<section class="section">
-<div class="container is-max-desktop" style="max-width: 2500px !important;">
-	<div class="columns is-centered has-text-centered">
-		<div class="column is-four-fifths">
-			<h2 class="title is-3">Compositional Text-to-Video Examples on T2V-ComBench (with CogVideoX-2B)</h2>
-			<!-- <p>We show examples from both U-Net based models (I2V-GenXL & SDXL),  and DiT based models (Latte & Pixart-&alpha;)</p>
-			<br><br>
-			<div class="content has-text-justified">
-				<p>
+<style>
+	.first-item {
+		padding: 0;
+		margin: 0;
+	}
+	.first-item .text-container {
+		width: 100%;
+		height: 380px; 
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around; 
+		align-items: flex-end; 
+		text-align: right; 
+		margin: 0;
+		padding: 0;
+	}
+	.first-item p {
+		margin: 0;
+		padding: 0;
+		line-height: 1.2;
+	}
+	</style>
 
-				</p> -->
-				<br>
+		<section class="section">
+			<div class="container is-max-desktop" style="max-width: 2500px !important;">
+				<div class="columns is-centered has-text-centered">
+					<div class="column is-four-fifths">
+						<h2 class="title is-3">Compositional Text-to-Video Examples on T2V-ComBench (with CogVideoX-5B)</h2>
+						<!-- <p>We show examples from both U-Net based models (I2V-GenXL & SDXL),  and DiT based models (Latte & Pixart-&alpha;)</p>
+						<br><br>
+						<div class="content has-text-justified">
+							<p>
+			
+							</p> -->
+							<br>
+						</div>
+						<div class="content is-centered has-text-centered" >
+							<h3 class="example-heading">Dynamic Attribute Binding Examples</h3>
+							<hr>
+							<div class="wrap-row">
+			<!-- Part 1, no traj -->
+			<div class="container">
+				<!-- Set up row with two columns per row -->
+				<div class="row row-cols-5 g-0">
+					<div class="col first-item" data-item>
+						<div>
+							<div class="text-container card-img-top card-img-bottom">
+							<p>CogVideoX-5B</p>
+							<p>CogVideoX-5B+Ours</p>
+							<p>LLM layout plan</p>
+							</div>
+							<div class="hover-text" style="margin-top: 0;">
+							<div class="card-body" style="margin: 0; padding: 0;">
+								<h7 class="card-title" style="margin: 0; padding: 0;"></h7>
+							</div>
+							</div>
+						</div>
+						</div>	  	
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/A cat's green eyes turn a red.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A cat's green eyes turn a red</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/A timelapse of a piece of bread initially fresh, then growing moldy.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A timelapse of a piece of bread initially fresh, then growing moldy</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/Clear blue sky turns stormy gray.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">Clear blue sky turns stormy gray</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/A timelapse of a flower bud blooming into a full flower.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A timelapse of a flower bud blooming into a full flower</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					
+					</div>
 			</div>
+			</section>
+			
+			<section class="section">
 			<div class="content is-centered has-text-centered" >
-				<h3 class="example-heading">Dynamic Attribute Binding Examples</h3>
+				<h3 class="example-heading" style="margin-top: -70px;">Object Interaction Examples</h3>
 				<hr>
 				<div class="wrap-row">
-<!-- Part 1, no traj -->
-<div class="container">
-	<!-- Set up row with two columns per row -->
-	<div class="row row-cols-3 g-3">
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/16_A timelapse of a piece of metal gradually rusting when exposed to moisture_0002.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A timelapse of a piece of metal gradually rusting when exposed to moisture</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/18_A timelapse of a flower bud blooming into a full flower_0004.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A timelapse of a flower bud blooming into a full flower</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/8_A timelapse of a ceramic vase glossy and new, becoming cracked and weathered with age_0013.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A timelapse of a ceramic vase glossy and new, becoming cracked and weathered with age</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/3_A pumpkin growing from a small bud into a large fruit_0027.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A pumpkin growing from a small bud into a large fruit</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/11_A clear sky clouding over_0041.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A clear sky clouding over</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/dynamic_attribute_binding/17_A timelapse of a leaf transitioning from green to bright red as autumn progresses_0001.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A timelapse of a leaf transitioning from green to bright red as autumn progresses</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-
-		</div>
-</div>
-</section>
-
-<section class="section">
-<div class="content is-centered has-text-centered" >
-	<h3 class="example-heading" style="margin-top: -70px;">Object Interaction Examples</h3>
-	<hr>
-	<div class="wrap-row">
-<!-- Part 1, no traj -->
-<div class="container">
-	<!-- Set up row with two columns per row -->
-	<div class="row row-cols-3 g-3">
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/object_interactions/10_Superhero phases through falling debris unharmed_0048.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Superhero phases through falling debris unharmed</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/object_interactions/17_A parent teaches a child to ride a bike_0098.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A parent teaches a child to ride a bike</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/object_interactions/3_Fork tines press into a piece of cake_0024.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Fork tines press into a piece of cake</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/object_interactions/11_Man teaches robot to play chess_0050.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Man teaches robot to play chess</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/object_interactions/7_Pottery shatters on the floor_0038.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Pottery shatters on the floor</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/object_interactions/5_A group of volunteers clean up a beach, working together to protect the environment_0097.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A group of volunteers clean up a beach, working together to protect the environment</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		
-		
-
-	</div>
-
-</div>
-</section>
-
-<section class="section">
-		<div class="content is-centered has-text-centered" >
-			<h3 class="example-heading" style="margin-top: -70px;">Spatial Relationship Examples</h3>
-			<hr>
-			<div class="wrap-row">
-		<!-- Part 1, no traj -->
-		<div class="container">
-			<!-- Set up row with two columns per row -->
-			<div class="row row-cols-3 g-3">
-				<div class="col" data-item>
-					<div class="">
-					<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-						<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/14_A duck waddling below a spacecraft_0055.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-					<div class="hover-text">
-						<div class="card-body">
-						<h7 class="card-title">A duck waddling below a spacecraft</h7>
+			<!-- Part 1, no traj -->
+			<div class="container">
+				<!-- Set up row with two columns per row -->
+				<div class="row row-cols-5 g-0">
+					<div class="col first-item" data-item>
+					<div>
+						<div class="text-container card-img-top card-img-bottom">
+						<p>CogVideoX-5B</p>
+						<p>CogVideoX-5B+Ours</p>
+						<p>LLM layout plan</p>
+						</div>
+						<div class="hover-text" style="margin-top: 0;">
+						<div class="card-body" style="margin: 0; padding: 0;">
+							<h7 class="card-title" style="margin: 0; padding: 0;"></h7>
+						</div>
 						</div>
 					</div>
-					</div>
-				</div>
-				<div class="col" data-item>
-					<div class="">
-					<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-						<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/7_A child walking in front of a car_0066.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-					<div class="hover-text">
-						<div class="card-body">
-						<h7 class="card-title">A child walking in front of a car</h7>
+					</div>	  
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/object_interactions/Cat's paw presses on a soft pillow.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">Cat's paw presses on a soft pillow</h7>
+							</div>
+						</div>
 						</div>
 					</div>
-					</div>
-				</div>
-				<div class="col" data-item>
-					<div class="">
-					<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-						<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/1_A gorilla sitting on the left side of a vending machine in a forest_0011.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-					<div class="hover-text">
-						<div class="card-body">
-						<h7 class="card-title">A gorilla sitting on the left side of a vending machine in a forest</h7>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/object_interactions/Coach motivates athlete during a tough workout.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">Coach motivates athlete during a tough workout</h7>
+							</div>
+						</div>
 						</div>
 					</div>
-					</div>
-				</div>
-				<div class="col" data-item>
-					<div class="">
-					<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-						<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/7_A dog waiting patiently behind a cat_0073.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-					<div class="hover-text">
-						<div class="card-body">
-						<h7 class="card-title">A dog waiting patiently behind a cat</h7>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/object_interactions/Sorcerer summons water from thin air, flooding room.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">Sorcerer summons water from thin air, flooding room</h7>
+							</div>
+						</div>
 						</div>
 					</div>
-					</div>
-				</div>
-				<div class="col" data-item>
-					<div class="">
-					<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-						<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/2_A toddler walking on the left of a dog in a park_0004.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-					<div class="hover-text">
-						<div class="card-body">
-						<h7 class="card-title">A toddler walking on the left of a dog in a park</h7>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/object_interactions/Tiger coach whistles at soccer practice.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">Tiger coach whistles at soccer practice</h7>
+							</div>
+						</div>
 						</div>
 					</div>
-					</div>
-				</div>
-				<div class="col" data-item>
-					<div class="">
-					<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-						<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/21_A parrot flying under a drone_0057.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-					<div class="hover-text">
-						<div class="card-body">
-						<h7 class="card-title">A parrot flying under a drone</h7>
-						</div>
-					</div>
-					</div>
+					
+					
+			
 				</div>
 			
-
-				</div>
-</div>
-</section>
-
-
-<section class="section">
-<div class="content is-centered has-text-centered" >
-	<h3 class="example-heading" style="margin-top: -70px;">Motion Binding Examples</h3>
-	<hr>
-	<div class="wrap-row">
-<!-- Part 1, no traj -->
-<div class="container">
-	<!-- Set up row with two columns per row -->
-	<div class="row row-cols-3 g-3">
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/motion_binding/13_The sun rises, moving upwards behind stationary buildings_0091.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">The sun rises, moving upwards behind stationary buildings</h7>
-				</div>
 			</div>
+			</section>
+			
+			<section class="section">
+					<div class="content is-centered has-text-centered" >
+						<h3 class="example-heading" style="margin-top: -70px;">Spatial Relationship Examples</h3>
+						<hr>
+						<div class="wrap-row">
+					<!-- Part 1, no traj -->
+					<div class="container">
+						<!-- Set up row with two columns per row -->
+						<div class="row row-cols-5 g-0">
+							<div class="col first-item" data-item>
+								<div>
+									<div class="text-container card-img-top card-img-bottom">
+									<p>CogVideoX-5B</p>
+									<p>CogVideoX-5B+Ours</p>
+									<p>LLM layout plan</p>
+									</div>
+									<div class="hover-text" style="margin-top: 0;">
+									<div class="card-body" style="margin: 0; padding: 0;">
+										<h7 class="card-title" style="margin: 0; padding: 0;"></h7>
+									</div>
+									</div>
+								</div>
+								</div>	  
+							<div class="col" data-item>
+								<div class="">
+								<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+									<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/A chandelier hanging above a grand piano in a busy hotel lobby.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+								<div class="hover-text">
+									<div class="card-body">
+									<h7 class="card-title">A chandelier hanging above a grand piano in a busy hotel lobby</h7>
+									</div>
+								</div>
+								</div>
+							</div>
+							<div class="col" data-item>
+								<div class="">
+								<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+									<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/A duck waddling below a spacecraft.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+								<div class="hover-text">
+									<div class="card-body">
+									<h7 class="card-title">A duck waddling below a spacecraft</h7>
+									</div>
+								</div>
+								</div>
+							</div>
+							<div class="col" data-item>
+								<div class="">
+								<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+									<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/A lion sitting behind a chicken.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+								<div class="hover-text">
+									<div class="card-body">
+									<h7 class="card-title">A lion sitting behind a chicken</h7>
+									</div>
+								</div>
+								</div>
+							</div>
+							<div class="col" data-item>
+								<div class="">
+								<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+									<source src="./DreamRunner/static/videos/t2vcom/spatial_relationships/A llama walking on the right side of a motorcycle in a city street.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+								<div class="hover-text">
+									<div class="card-body">
+									<h7 class="card-title">A llama walking on the right side of a motorcycle in a city street</h7>
+									</div>
+								</div>
+								</div>
+							</div>
+			
+							</div>
 			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/motion_binding/9_A golden retriever scampering rightwards across a garden_0036.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A golden retriever scampering rightwards across a garden</h7>
-				</div>
+			</section>
+			
+			
+			<section class="section">
+			<div class="content is-centered has-text-centered" >
+				<h3 class="example-heading" style="margin-top: -70px;">Motion Binding Examples</h3>
+				<hr>
+				<div class="wrap-row">
+			<!-- Part 1, no traj -->
+			<div class="container">
+				<!-- Set up row with two columns per row -->
+				<div class="row row-cols-5 g-0">
+					<div class="col first-item" data-item>
+						<div>
+							<div class="text-container card-img-top card-img-bottom">
+							<p>CogVideoX-5B</p>
+							<p>CogVideoX-5B+Ours</p>
+							<p>LLM layout plan</p>
+							</div>
+							<div class="hover-text" style="margin-top: 0;">
+							<div class="card-body" style="margin: 0; padding: 0;">
+								<h7 class="card-title" style="margin: 0; padding: 0;"></h7>
+							</div>
+							</div>
+						</div>
+						</div>	  
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/motion_binding/A bird flies upwards in a garden.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A bird flies upwards in a garden</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/motion_binding/A drone is gradually descending to the ground in a park.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A drone is gradually descending to the ground in a park</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/motion_binding/A paper airplane gliding to the right across a classroom.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A paper airplane gliding to the right across a classroom</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/motion_binding/A squirrel climbs upward on a tree.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A squirrel climbs upward on a tree</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+			
+					</div>
 			</div>
+			</section>
+			
+			
+			<section class="section">
+			<div class="content is-centered has-text-centered" >
+				<h3 class="example-heading" style="margin-top: -70px;">Action Binding Examples</h3>
+				<hr>
+				<div class="wrap-row">
+			<!-- Part 1, no traj -->
+			<div class="container">
+				<!-- Set up row with two columns per row -->
+				<div class="row row-cols-5 g-0">
+					<div class="col first-item" data-item>
+						<div>
+							<div class="text-container card-img-top card-img-bottom">
+							<p>CogVideoX-5B</p>
+							<p>CogVideoX-5B+Ours</p>
+							<p>LLM layout plan</p>
+							</div>
+							<div class="hover-text" style="margin-top: 0;">
+							<div class="card-body" style="margin: 0; padding: 0;">
+								<h7 class="card-title" style="margin: 0; padding: 0;"></h7>
+							</div>
+							</div>
+						</div>
+						</div>	  
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/action_binding/A dolphin jumps next to a speeding boat.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A dolphin jumps next to a speeding boat</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/action_binding/A kid and a penguin watch a movie in the cinema.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A kid and a penguin watch a movie in the cinema</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/action_binding/A monkey in a pilot jacket and a parrot with aviator goggles ready for flight.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A monkey in a pilot jacket and a parrot with aviator goggles ready for flight</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/action_binding/A squirrel gathers nuts and a bat hangs from a tree branch.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">A squirrel gathers nuts and a bat hangs from a tree branch</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+			
+					</div>
 			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/motion_binding/3_A robot walking from left to right in a factory_0059.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A robot walking from left to right in a factory</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/motion_binding/11_A bubble floats upwards, shimmering and reflecting the sunlight_0099.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A bubble floats upwards, shimmering and reflecting the sunlight</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/motion_binding/2_A robot vacuum is sweeping the floor from right to left_0046.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A robot vacuum is sweeping the floor from right to left</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/motion_binding/0_A kite flies left to right on a windy day_0011.mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A kite flies left to right on a windy day</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-
-		</div>
-</div>
-</section>
-
-
-<section class="section">
-<div class="content is-centered has-text-centered" >
-	<h3 class="example-heading" style="margin-top: -70px;">Action Binding Examples</h3>
-	<hr>
-	<div class="wrap-row">
-<!-- Part 1, no traj -->
-<div class="container">
-	<!-- Set up row with two columns per row -->
-	<div class="row row-cols-3 g-3">
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/action_binding/4_A wolf howls into a microphone and a fox plays the drums_0030.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A wolf howls into a microphone and a fox plays the drums</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/action_binding/6_A man takes photos and a boy dances on the street_0061.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A man takes photos and a boy dances on the street</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/action_binding/12_A kangaroo bounds alongside a moving bus_0081.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A kangaroo bounds alongside a moving bus</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/action_binding/9_A man cooks dinner and a dog lounges in the sun_0051.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A man cooks dinner and a dog lounges in the sun</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/action_binding/17_A duck swims in a pond and a model ship floats nearby_0089.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A duck swims in a pond and a model ship floats nearby</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/action_binding/1_A chicken pecks at the ground, a bee flies overhead_0007.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">A chicken pecks at the ground, a bee flies overhead</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-	
-
-		</div>
-</div>
-</section>
+			</section>
+							
+			<section class="section">
+			<div class="content is-centered has-text-centered" >
+				<h3 class="example-heading" style="margin-top: -70px;">Consistent Attribute Binding Examples</h3>
+				<hr>
+				<div class="wrap-row">
+			<!-- Part 1, no traj -->
+			<div class="container">
+				<!-- Set up row with two columns per row -->
+				<div class="row row-cols-5 g-0">
+					<div class="col first-item" data-item>
+						<div>
+							<div class="text-container card-img-top card-img-bottom">
+							<p>CogVideoX-5B</p>
+							<p>CogVideoX-5B+Ours</p>
+							<p>LLM layout plan</p>
+							</div>
+							<div class="hover-text" style="margin-top: 0;">
+							<div class="card-body" style="margin: 0; padding: 0;">
+								<h7 class="card-title" style="margin: 0; padding: 0;"></h7>
+							</div>
+							</div>
+						</div>
+						</div>	  
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/Big hearts and small stars floating upwards.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">Big hearts and small stars floating upwards</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/Rectangular briefcase swinging near a hexagonal fountain.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">Rectangular briefcase swinging near a hexagonal fountain</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/White tractor plowing near a green farmhouse.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">White tractor plowing near a green farmhouse</h7>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col" data-item>
+						<div class="">
+						<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
+							<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/Wooden car speeding past a porcelain tree.mp4">
+							Your browser does not support the video tag.
+						</video>
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">Wooden car speeding past a porcelain tree</h7>
+							</div>
+						</div>
+						</div>
+					</div>
 				
-<section class="section">
-<div class="content is-centered has-text-centered" >
-	<h3 class="example-heading" style="margin-top: -70px;">Consistent Attribute Binding Examples</h3>
-	<hr>
-	<div class="wrap-row">
-<!-- Part 1, no traj -->
-<div class="container">
-	<!-- Set up row with two columns per row -->
-	<div class="row row-cols-3 g-3">
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/12_Spherical globe rotating next to a cube clock_0030.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Spherical globe rotating next to a cube clock</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/3_Woolen scarf fluttering near a leather suitcase_0036.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Woolen scarf fluttering near a leather suitcase</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/8_Green taxi drives past a yellow building_0011.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Green taxi drives past a yellow building</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/9_Green parrot perching on a brown chair_0004.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Green parrot perching on a brown chair</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/13_Linen curtains blowing beside a bamboo wall_0045.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Linen curtains blowing beside a bamboo wall</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col" data-item>
-			<div class="">
-			<video class="card-img-top card-img-bottom" controls muted autoplay="autoplay" loop="loop" style="width: 70%; height: auto;">>
-				<source src="./DreamRunner/static/videos/t2vcom/consistent_attribute_binding/2_Blue curtains swaying near a yellow sofa_0015.mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="hover-text">
-				<div class="card-body">
-				<h7 class="card-title">Blue curtains swaying near a yellow sofa</h7>
-				</div>
-			</div>
-			</div>
-		</div>
-	
-
-		</div>
-</div>
-
-</section>
-
-
-<section class="section">
-	<div class="content is-centered has-text-centered" >
-		<h3 class="example-heading" style="margin-top: -70px;">Quantitative Results on T2V-ComBench</h3>
-		<hr>
-		<div class="wrap-row">
-<div class="container is-max-desktop">
-	<div class="columns is-centered has-text-centered">
-		<div class="column is-four-fifths">					
-			<img src="./DreamRunner/static/images/t2v_combench_qual.png" alt="t2v_combench_qual" width="90%" style="display: block; margin: auto;">
-			<p>
-				<span style="font-weight: bold;">Best</span>/<span style="text-decoration: underline;">2nd best</span> scores for open-sourced models are 
-				<span style="font-weight: bold;">bolded</span>/<span style="text-decoration: underline;">underlined</span>.
-				<span style="background-color: rgb(220, 220, 220);">gray</span> indicates close-sourced models, and 
-				<span style="background-color: yellow; font-style: italic;">yellow</span> indicates the best score for close-sourced models.
-			</p>
 			
+					</div>
 			</div>
-
-		</div>
-	</div>
-</div>
-</section>
-
+			
+			</section>
+			
+			
+			<section class="section">
+				<div class="content is-centered has-text-centered" >
+					<h3 class="example-heading" style="margin-top: -70px;">Quantitative Results on T2V-ComBench</h3>
+					<hr>
+					<div class="wrap-row">
+			<div class="container is-max-desktop">
+				<div class="columns is-centered has-text-centered">
+					<div class="column is-four-fifths">					
+						<img src="./DreamRunner/static/images/t2v_combench_qual.png" alt="t2v_combench_qual" width="90%" style="display: block; margin: auto;">
+						<p>
+							<span style="font-weight: bold;">Best</span>/<span style="text-decoration: underline;">2nd best</span> scores for open-sourced models are 
+							<span style="font-weight: bold;">bolded</span>/<span style="text-decoration: underline;">underlined</span>.
+							<span style="background-color: rgb(220, 220, 220);">gray</span> indicates close-sourced models, and 
+							<span style="background-color: yellow; font-style: italic;">yellow</span> indicates the best score for close-sourced models.
+						</p>
+						
+						</div>
+			
+					</div>
+				</div>
+			</div>
+			</section>
+			
+			
 
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content" style="text-align: left;">
         <h2 class="title">BibTeX</h2>
         <pre><code>@article{zun2024dreamrunner,
     author = {Zun Wang and Jialu Li and Han Lin and Jaehong Yoon and Mohit Bansal},
-    title  = {DreamRunner: Fine-Grained Storytelling Video Generation with Retrieval-Augmented Motion Adaptation},
+    title  = {DreamRunner: Fine-Grained Compositional Story-to-Video Video Generation with Retrieval-Augmented Motion Adaptation},
 	journal   = {arxiv},
 	year      = {2024},
 	url       = {https://arxiv.org/abs/2411.16657}
