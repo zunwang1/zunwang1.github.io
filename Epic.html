@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="EPiC: Efficient Video Camera Control Learning with Precise Anchor-Video Guidance">
+	<meta name="keywords"
+		content="video,video generation,rag,diffusion,Storytelling video generation,attention,genai">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>EPiC</title>
+
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+
+		gtag('js', new Date());
+
+		gtag('config', 'G-PYVRSFMDRL');
+	</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="./DreamRunner/static/css/bulma.min.css">
+	<link rel="stylesheet" href="./DreamRunner/static/css/bulma-carousel.min.css">
+	<link rel="stylesheet" href="./DreamRunner/static/css/bulma-slider.min.css">
+	<link rel="stylesheet" href="./DreamRunner/static/css/fontawesome.all.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+	<link rel="stylesheet" href="./DreamRunner/static/css/index.css">
+	<!-- <link rel="icon" href="./DreamRunner/static/images/favicon.svg"> -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script defer src="./DreamRunner/static/js/fontawesome.all.min.js"></script>
+	<script src="./DreamRunner/static/js/bulma-carousel.min.js"></script>
+	<script src="./DreamRunner/static/js/bulma-slider.min.js"></script>
+	<script src="./DreamRunner/static/js/index.js"></script>
+
+</head>
+
+<body>
+	<section class="hero">
+		<div class="hero-body">
+			<div class="container is-max-desktop">
+				<div class="columns is-centered">
+					<div class="column has-text-centered">
+						<h1 class="title is-1 publication-title">
+							<!-- <span style="color: rgb(237, 178, 13);">C</span><span style="color: rgb(112, 48, 160);">T</span><span style="color: rgb(0, 176, 240);">R</span><span style="color: rgb(215, 49, 136);">L</span>-Adapter -->
+							 <b>EPiC</b>: Efficient Video Camera Control Learning </br> with Precise Anchor-Video Guidance
+						</h1>
+						<div class="is-size-5 publication-authors">
+							<span class="author-block">
+								<a href="https://zunwang1.github.io/">Zun Wang</a>
+							</span> &nbsp;
+                            <span class="author-block" , style="padding-left:30px">
+								<a href="https://j-min.io/">Jaemin Cho</a>
+							</span> &nbsp;
+							<span class="author-block" , style="padding-left:30px">
+								<a href="https://jialuli-luka.github.io/">Jialu Li</a>
+							</span> &nbsp;
+							<span class="author-block", style="padding-left:30px">
+								<a href="https://hl-hanlin.github.io/">Han Lin</a>
+							</span> &nbsp;
+							<span class="author-block" , style="padding-left:30px">
+								<a href="https://jaehong31.github.io">Jaehong Yoon</a>
+							</span> &nbsp;
+                            <span class="author-block" , style="padding-left:30px">
+								<a href="https://zhangyuejoslin.github.io/">Yue Zhang</a>
+							</span> &nbsp;
+							<span class="author-block" , style="padding-left:30px">
+								<a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a>
+							</span>
+						</div>
+
+						<div class="is-size-5 publication-authors">
+							<span class="author-block">University of North Carolina, Chapel Hill</span>
+						</div>
+						
+
+						<div class="column has-text-centered">
+							<div class="publication-links">
+								<!-- PDF Link. -->
+								<span class="link-block">
+									<a href="https://arxiv.org/pdf/2411.16657" class="external-link button is-normal is-rounded is-dark">
+										<span class="icon">
+											<i class="fas fa-file-pdf"></i>
+										</span>
+										<span>Paper</span>
+									</a>
+								</span>
+								<!-- Code Link. -->
+								<span class="link-block">
+									<a href="https://github.com/wz0919/DreamRunner" class="external-link button is-normal is-rounded is-dark">
+										<span class="icon">
+											<i class="fab fa-github"></i>
+										</span>
+										<span>Code</span>
+									</a>
+								</span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+		
+
+	<section class="section">
+		<div class="container is-max-desktop">
+			<!-- Abstract. -->
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<h2 class="title is-3">Abstract</h2>
+					<div class="content has-text-justified">
+
+						<p>
+							Controllable 3D camera trajectories in video diffusion models are highly sought after for content creation, yet remain a significant challenge. Recent approaches often create anchor videos(i.e., rendered videos that approximate desired camera motions) to guide diffusion models as a structured prior, by rendering from estimated point clouds following annotated camera trajectories. However, errors inherent in point cloud estimation often lead to inaccurate anchor videos. Moreover, the requirement for extensive camera trajectory annotations further increases resource demands.
+						</p>
+						<p>
+							To address these limitations, we introduce EPiC, an efficient and precise camera control learning framework that automatically constructs high-quality anchor videos without expensive camera trajectory annotations. Concretely, we automatically construct highly precise anchor videos for training by masking source videos based on first-frame visibility. This approach ensures high alignment, eliminates the need for camera trajectory annotations, and thus can be readily applied to any in-the-wild video to generate image-to-video (I2V) training pairs. Furthermore, we introduce Anchor-ControlNet, a lightweight conditioning module that integrates anchor video guidance in visible regions to pretrained video diffusion models, with less than 1\% of backbone model parameters. By combining the proposed anchor video data and ControlNet module, EPiC achieves efficient training with substantially fewer parameters and less data, without requiring modifications to the diffusion model backbone typically needed to mitigate rendering misalignments. Although being trained on masking-based anchor videos, our method generalizes robustly to anchor videos made with point clouds  during inference, enabling precise 3D-informed camera control. EPiC achieves state-of-the-art performance on RealEstate10K and MiraData for I2V camera control task, demonstrating precise and robust camera control ability both quantitatively and qualitatively. Notably, EPiC also exhibits strong zero-shot generalization to video-to-video (V2V) scenarios. This is compelling as it is trained exclusively on I2V data, where anchor videos are derived from source videos, using only their first frame for visibility referencing. We also provide comprehensive qualitative examples illustrating our and ablation studies that justify our design choices.						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<section class="section">
+		<div class="container is-max-desktop">
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+
+					<h2 class="title is-3">Method</h2>						
+					<img src="./EPiC/method.png" alt="sr3ai" width="80%" style="display: block; margin: auto;">
+					    <p></p>
+						<p>EPiC Model Architecture. (a) shows an overview of our EPiC framework. EPiC supports multiple inference scenarios. (b) and (c) illustrate our I2V inference scenarios using full and masked point clouds, respectively. (d) depicts V2V inference scenario employing dynamic point clouds.
+						</p>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+		<style>
+			.example-grid {
+			  display: grid;
+			  grid-template-columns: max-content 1fr; /* 左列紧凑，右列填满 */
+			  align-items: stretch;
+			  gap: 16px;
+			}
+		  
+			.text-col {
+			  display: grid;
+			  grid-template-rows: repeat(4, 1fr); /* 均分为4份 */
+			  height: 100%; /* 匹配右侧视频高度 */
+			  text-align: center;
+			  align-items: center; /* 每行文字垂直居中 */
+			  white-space: nowrap;
+			}
+		  
+			.text-col p {
+			  margin: 0;
+			  padding: 0;
+			  line-height: 1.2;
+			  align-self: center;
+			}
+		  
+			.video-col video {
+			  width: 100%;
+			  height: auto;
+			  border: 1px solid #ccc;
+			}
+		  </style>
+		  
+		
+		<section class="section">
+			<div class="container is-max-desktop" style="max-width: 2500px !important;">
+			  <div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+				  <h2 class="title is-3">Video-to-Video Camera Control Demos</h2>
+				  <br>
+	
+				  <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">Camera Trajectory: Arc Left</h3>
+					<hr>
+		  
+					<div class="example-grid">
+					  <div class="text-col">
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>						
+					  </div>
+		  
+					  <div class="video-col">
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/arc_left.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+					</div>
+		  
+				  </div>
+
+				  <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">Camera Trajectory: Arc Right</h3>
+					<hr>
+		  
+					<div class="example-grid">
+					  <div class="text-col">
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>						
+					  </div>
+		  
+					  <div class="video-col">
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/arc_right.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+					</div>
+		  
+				  </div>
+
+				  <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">Camera Trajectory: Translation Down</h3>
+					<hr>
+		  
+					<div class="example-grid">
+					  <div class="text-col">
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>						
+					  </div>
+		  
+					  <div class="video-col">
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/translation_down.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+					</div>
+		  
+				  </div>
+
+				  <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">Camera Trajectory: Translation Up</h3>
+					<hr>
+		  
+					<div class="example-grid">
+					  <div class="text-col">
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>						
+					  </div>
+		  
+					  <div class="video-col">
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/translation_up.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+					</div>
+		  
+				  </div>
+
+				  <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">Camera Trajectory: Zoom out</h3>
+					<hr>
+		  
+					<div class="example-grid">
+					  <div class="text-col">
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>						
+					  </div>
+		  
+					  <div class="video-col">
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/zoom_out.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+					</div>
+		  
+				  </div>
+
+				  <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">Camera Trajectory: Zoom in</h3>
+					<hr>
+		  
+					<div class="example-grid">
+					  <div class="text-col">
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>						
+					  </div>
+		  
+					  <div class="video-col">
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/zoom_in.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+					</div>
+		  
+				  </div>
+
+				  <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">Mutli-Camera Shooting</h3>
+					<hr>
+
+					  <div class="video-col">
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">The video in the center is the source video.
+							</h7>
+							</div>
+						</div>
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/corgi.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+
+					  <div class="video-col">
+                        <br>
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/ironman.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+
+					  <div class="video-col">
+                        <br>
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/dog.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+
+					</div>		  
+				  </div>
+				  
+				</div>
+			  </div>
+			</div>
+		  </section>
+		  
+
+	
+			
+			
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content" style="text-align: left;">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{zun2024dreamrunner,
+    author = {Zun Wang and Jialu Li and Han Lin and Jaehong Yoon and Mohit Bansal},
+    title  = {DreamRunner: Fine-Grained Compositional Story-to-Video Video Generation with Retrieval-Augmented Motion Adaptation},
+	journal   = {arxiv},
+	year      = {2024},
+	url       = {https://arxiv.org/abs/2411.16657}
+}
+        </code></pre>
+    </div>
+</section>
+
+	
+
+
+	<footer class="footer">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="column is-8">
+					<div class="content">
+						The webpage was adapted from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+<style>
+	code {
+		display: block;
+	}
+</style>
+<script>
+	var code = document.querySelector('pre code');
+	code.innerHTML = code.textContent.replace(/(\w)/, '<span>$1');
+	var left = code.querySelector('span').getClientRects()[0].left;
+	code.style.marginLeft = (-left + code.getClientRects()[0].left) + 'px';  
+</script>
+
+</html>
