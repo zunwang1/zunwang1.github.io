@@ -79,10 +79,10 @@
 							<span class="author-block">University of North Carolina, Chapel Hill</span>
 						</div>
 						
-
+<!-- 
 						<div class="column has-text-centered">
 							<div class="publication-links">
-								<!-- PDF Link. -->
+								<!== PDF Link. ==>
 								<span class="link-block">
 									<a href="https://arxiv.org/pdf/2411.16657" class="external-link button is-normal is-rounded is-dark">
 										<span class="icon">
@@ -91,7 +91,7 @@
 										<span>Paper</span>
 									</a>
 								</span>
-								<!-- Code Link. -->
+								<!== Code Link. ==>
 								<span class="link-block">
 									<a href="https://github.com/wz0919/DreamRunner" class="external-link button is-normal is-rounded is-dark">
 										<span class="icon">
@@ -102,14 +102,13 @@
 								</span>
 							</div>
 
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 		
-
 	<section class="section">
 		<div class="container is-max-desktop">
 			<!-- Abstract. -->
@@ -117,7 +116,6 @@
 				<div class="column is-four-fifths">
 					<h2 class="title is-3">Abstract</h2>
 					<div class="content has-text-justified">
-
 						<p>
 							Controllable 3D camera trajectories in video diffusion models are highly sought after for content creation, yet remain a significant challenge. Recent approaches often create anchor videos(i.e., rendered videos that approximate desired camera motions) to guide diffusion models as a structured prior, by rendering from estimated point clouds following annotated camera trajectories. However, errors inherent in point cloud estimation often lead to inaccurate anchor videos. Moreover, the requirement for extensive camera trajectory annotations further increases resource demands.
 						</p>
@@ -179,6 +177,103 @@
 		  </style>
 		  
 		
+          <section class="section">
+			<div class="container is-max-desktop" style="max-width: 2500px !important;">
+			  <div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+				  <h2 class="title is-3">Image-to-Video Camera Control Demos</h2>
+				  <br>
+	
+				  <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">Generating Static/Dynamic Videos via Different Inference Mode</h3>
+					<hr>
+		  
+
+                    <div class="hover-text">
+                        <div class="card-body">
+                        <h7 class="card-title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            We indentify potential moving objects and mask their point clouds when rendering condition anchor videos.
+                        </h7>
+                        </div>
+                    </div>
+                <div class="example-grid">
+                  <div class="text-col">
+                    <p>Masked Point Cloud<br>Dynamic Videos</p>
+                    <p>Masked Point Cloud<br>Anchor Videos</p>
+                    <p>Full Point Cloud<br>Dynamic Videos</p>
+                    <p>Full Point Cloud<br>Anchor Videos</p>				
+                  </div>
+      
+                  <div class="video-col">
+                    <video controls muted autoplay loop>
+                      <source src="./EPiC/videos-v2v/mask_comparison_w_reference.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                More results.
+							</h7>
+							</div>
+						</div>
+					<div class="example-grid">
+					  <div class="text-col">
+						<p>Masked Point Cloud<br>Dynamic Videos</p>
+						<p>Full Point Cloud<br>Static Videos</p>
+						<p>Masked Point Cloud<br>Dynamic Videos</p>
+						<p>Full Point Cloud<br>Static Videos</p>				
+					  </div>
+		  
+					  <div class="video-col">
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/mask_comparison.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+					</div>
+		  
+				  </div>
+
+		  
+				  </div>
+                  
+
+				  <!-- <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">Multi-Camera Shooting</h3>
+					<hr>
+
+					  <div class="video-col">
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">The video in the center is the source video.
+							</h7>
+							</div>
+						</div>
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/corgi.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+
+					  <div class="video-col">
+                        <br>
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/batman.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div> -->
+
+					</div>		  
+				  </div>
+				  
+				</div>
+			  </div>
+			</div>
+		  </section>
+          
 		<section class="section">
 			<div class="container is-max-desktop" style="max-width: 2500px !important;">
 			  <div class="columns is-centered has-text-centered">
@@ -354,6 +449,59 @@
 		  
 				  </div>
 
+                  <div class="content is-centered has-text-centered">
+					<h3 class="example-heading">More Complex Camera Trajectories</h3>
+					<hr>
+		  
+						<div class="hover-text">
+							<div class="card-body">
+							<h7 class="card-title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTrajectory 1
+							</h7>
+							</div>
+						</div>
+					<div class="example-grid">
+					  <div class="text-col">
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>
+						<p>Source<br>Video</p>
+						<p>Generated<br>Video</p>						
+					  </div>
+		  
+					  <div class="video-col">
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/orbit_from_left.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+                      
+					</div>
+                    
+                    <div class="hover-text">
+                        <div class="card-body">
+                        <h7 class="card-title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTrajectory 2
+                        </h7>
+                        </div>
+                    </div>
+                    <div class="example-grid">
+                        <div class="text-col">
+                          <p>Source<br>Video</p>
+                          <p>Generated<br>Video</p>
+                          <p>Source<br>Video</p>
+                          <p>Generated<br>Video</p>						
+                        </div>
+            
+                        <div class="video-col">
+                          <video controls muted autoplay loop>
+                            <source src="./EPiC/videos-v2v/orbit_from_right.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                        
+                      </div>
+		  
+				  </div>
+                  
+
 				  <div class="content is-centered has-text-centered">
 					<h3 class="example-heading">Multi-Camera Shooting</h3>
 					<hr>
@@ -367,6 +515,14 @@
 						</div>
 						<video controls muted autoplay loop>
 						  <source src="./EPiC/videos-v2v/corgi.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+
+					  <div class="video-col">
+                        <br>
+						<video controls muted autoplay loop>
+						  <source src="./EPiC/videos-v2v/batman.mp4" type="video/mp4">
 						  Your browser does not support the video tag.
 						</video>
 					  </div>
