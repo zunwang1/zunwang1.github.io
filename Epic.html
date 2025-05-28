@@ -117,34 +117,14 @@
 					<h2 class="title is-3">Abstract</h2>
 					<div class="content has-text-justified">
 						<p>
-							Controllable 3D camera trajectories in video diffusion models are highly sought after for content creation, yet remain a significant challenge. Recent approaches often create anchor videos(i.e., rendered videos that approximate desired camera motions) to guide diffusion models as a structured prior, by rendering from estimated point clouds following annotated camera trajectories. However, errors inherent in point cloud estimation often lead to inaccurate anchor videos. Moreover, the requirement for extensive camera trajectory annotations further increases resource demands.
-						</p>
-						<p>
-							To address these limitations, we introduce EPiC, an efficient and precise camera control learning framework that automatically constructs high-quality anchor videos without expensive camera trajectory annotations. Concretely, we automatically construct highly precise anchor videos for training by masking source videos based on first-frame visibility. This approach ensures high alignment, eliminates the need for camera trajectory annotations, and thus can be readily applied to any in-the-wild video to generate image-to-video (I2V) training pairs. Furthermore, we introduce Anchor-ControlNet, a lightweight conditioning module that integrates anchor video guidance in visible regions to pretrained video diffusion models, with less than 1\% of backbone model parameters. By combining the proposed anchor video data and ControlNet module, EPiC achieves efficient training with substantially fewer parameters and less data, without requiring modifications to the diffusion model backbone typically needed to mitigate rendering misalignments. Although being trained on masking-based anchor videos, our method generalizes robustly to anchor videos made with point clouds  during inference, enabling precise 3D-informed camera control. EPiC achieves state-of-the-art performance on RealEstate10K and MiraData for I2V camera control task, demonstrating precise and robust camera control ability both quantitatively and qualitatively. Notably, EPiC also exhibits strong zero-shot generalization to video-to-video (V2V) scenarios. This is compelling as it is trained exclusively on I2V data, where anchor videos are derived from source videos, using only their first frame for visibility referencing. We also provide comprehensive qualitative examples illustrating our and ablation studies that justify our design choices.						</p>
+                            Recent approaches on 3D-informed camera control in video diffusion models (VDMs) often create anchor videos to guide diffusion models as a structured prior by rendering from estimated point clouds following annotated camera trajectories. However, errors inherent in point cloud estimation often lead to inaccurate anchor videos. Moreover, the requirement for extensive camera trajectory annotations further increases resource demands. To address these limitations, we introduce EPiC, an efficient and precise camera control learning framework that automatically constructs high-quality anchor videos without expensive camera trajectory annotations. Concretely, we create highly precise anchor videos for training by masking source videos based on first-frame visibility. This approach ensures high alignment, eliminates the need for camera trajectory annotations, and thus can be readily applied to any in-the-wild video to generate image-to-video (I2V) training pairs. Furthermore, we introduce Anchor-ControlNet, a lightweight conditioning module that integrates anchor video guidance in visible regions to pretrained VDMs, with less than 1% of backbone model parameters. By combining the proposed anchor video data and ControlNet module, EPiC achieves efficient training with substantially fewer parameters, training steps, and less data, without requiring modifications to the diffusion model backbone typically needed to mitigate rendering misalignments. Although being trained on masking-based anchor videos, our method generalizes robustly to anchor videos made with point clouds during inference, enabling precise 3D-informed camera control. EPiC achieves SOTA performance on RealEstate10K and MiraData for I2V camera control task, demonstrating precise and robust camera control ability both quantitatively and qualitatively. Notably, EPiC also exhibits strong zero-shot generalization to video-to-video scenarios.				
+                        </p>
 
 					</div>
 				</div>
 			</div>
 		</div>
 	
-	<section class="section">
-		<div class="container is-max-desktop">
-			<div class="columns is-centered has-text-centered">
-				<div class="column is-four-fifths">
-
-					<h2 class="title is-3">Method</h2>						
-					<img src="./EPiC/method.png" alt="sr3ai" width="80%" style="display: block; margin: auto;">
-					    <p></p>
-						<p>EPiC Model Architecture. (a) shows an overview of our EPiC framework. EPiC supports multiple inference scenarios. (b) and (c) illustrate our I2V inference scenarios using full and masked point clouds, respectively. (d) depicts V2V inference scenario employing dynamic point clouds.
-						</p>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
-
 		<style>
 			.example-grid {
 			  display: grid;
@@ -181,10 +161,25 @@
 			<div class="container is-max-desktop" style="max-width: 2500px !important;">
 			  <div class="columns is-centered has-text-centered">
 				<div class="column is-four-fifths">
-				  <h2 class="title is-3">Image-to-Video Camera Control Demos</h2>
+				  <h2 class="title is-3">Image-to-Video Camera Control Gallery</h2>
 				  <br>
 	
-				  <div class="content is-centered has-text-centered">
+                    <div class="hover-text">
+                        <div class="card-body">
+                        <h7 class="card-title">The first frame is the conditioning image.
+                        </h7>
+                        </div>
+                    </div>
+      
+                  <div class="video-col">
+                    <video controls muted autoplay loop>
+                      <source src="./EPiC/videos-i2v/i2v_demo.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+
+				  <!-- <div class="content is-centered has-text-centered">
 					<h3 class="example-heading">Generating Static/Dynamic Videos via Different Inference Mode</h3>
 					<hr>
 		  
@@ -206,7 +201,7 @@
       
                   <div class="video-col">
                     <video controls muted autoplay loop>
-                      <source src="./EPiC/videos-v2v/mask_comparison_w_reference.mp4" type="video/mp4">
+                      <source src="./EPiC/videos-i2v/mask_comparison_w_reference.mp4" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -229,7 +224,7 @@
 		  
 					  <div class="video-col">
 						<video controls muted autoplay loop>
-						  <source src="./EPiC/videos-v2v/mask_comparison.mp4" type="video/mp4">
+						  <source src="./EPiC/videos-i2v/mask_comparison.mp4" type="video/mp4">
 						  Your browser does not support the video tag.
 						</video>
 					  </div>
@@ -237,7 +232,7 @@
 		  
 				  </div>
 
-		  
+		   -->
 				  </div>
                   
 
@@ -278,7 +273,7 @@
 			<div class="container is-max-desktop" style="max-width: 2500px !important;">
 			  <div class="columns is-centered has-text-centered">
 				<div class="column is-four-fifths">
-				  <h2 class="title is-3">Video-to-Video Camera Control Demos</h2>
+				  <h2 class="title is-3">Video-to-Video Camera Control Gallery</h2>
 				  <br>
 	
 				  <div class="content is-centered has-text-centered">
@@ -287,7 +282,7 @@
 		  
 						<div class="hover-text">
 							<div class="card-body">
-							<h7 class="card-title">We apply the camera trajectory for the first 1/3 frames then keep it relatively static.
+							<h7 class="card-title">The camera trajectory is applied for the first 1/3 frames, and for the remaining frames, the camera stays fixed at the final pose.
 							</h7>
 							</div>
 						</div>
@@ -315,7 +310,7 @@
 		  
 						<div class="hover-text">
 							<div class="card-body">
-							<h7 class="card-title">We apply the camera trajectory for the first 1/3 frames then keep it relatively static.
+							<h7 class="card-title">The camera trajectory is applied for the first 1/3 frames, and for the remaining frames, the camera stays fixed at the final pose.
 							</h7>
 							</div>
 						</div>
@@ -343,7 +338,7 @@
 		  
 						<div class="hover-text">
 							<div class="card-body">
-							<h7 class="card-title">We apply the camera trajectory for the first 1/3 frames then keep it relatively static.
+							<h7 class="card-title">The camera trajectory is applied for the first 1/3 frames, and for the remaining frames, the camera stays fixed at the final pose.
 							</h7>
 							</div>
 						</div>
@@ -371,7 +366,7 @@
 		  
 						<div class="hover-text">
 							<div class="card-body">
-							<h7 class="card-title">We apply the camera trajectory for the first 1/3 frames then keep it relatively static.
+							<h7 class="card-title">The camera trajectory is applied for the first 1/3 frames, and for the remaining frames, the camera stays fixed at the final pose.
 							</h7>
 							</div>
 						</div>
@@ -399,7 +394,7 @@
 		  
 						<div class="hover-text">
 							<div class="card-body">
-							<h7 class="card-title">We apply the camera trajectory for the first 1/3 frames then keep it relatively static.
+							<h7 class="card-title">The camera trajectory is applied for the first 1/3 frames, and for the remaining frames, the camera stays fixed at the final pose.
 							</h7>
 							</div>
 						</div>
@@ -427,7 +422,7 @@
 		  
 						<div class="hover-text">
 							<div class="card-body">
-							<h7 class="card-title">We apply the camera trajectory for the first 1/3 frames then keep it relatively static.
+							<h7 class="card-title">The camera trajectory is applied for the first 1/3 frames, and for the remaining frames, the camera stays fixed at the final pose.
 							</h7>
 							</div>
 						</div>
@@ -452,10 +447,15 @@
                   <div class="content is-centered has-text-centered">
 					<h3 class="example-heading">More Complex Camera Trajectories</h3>
 					<hr>
-		  
+
 						<div class="hover-text">
 							<div class="card-body">
-							<h7 class="card-title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTrajectory 1
+							<h7 class="card-title">
+                            </p>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            The camera trajectory is applied for all the frames. </p>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                Trajectory 1
 							</h7>
 							</div>
 						</div>
@@ -478,7 +478,8 @@
                     
                     <div class="hover-text">
                         <div class="card-body">
-                        <h7 class="card-title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTrajectory 2
+                        <h7 class="card-title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Trajectory 2
                         </h7>
                         </div>
                     </div>
@@ -509,7 +510,7 @@
 					  <div class="video-col">
 						<div class="hover-text">
 							<div class="card-body">
-							<h7 class="card-title">The video in the center is the source video.
+							<h7 class="card-title">    The camera trajectory is applied for the first 1/3 frames, and for the remaining frames, the camera stays fixed at the final pose.</p>The video in the center is the source video.                            
 							</h7>
 							</div>
 						</div>
@@ -552,7 +553,208 @@
 		  </section>
 		  
 
-	
+          <section class="section">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+    
+                        <h2 class="title is-3">Method</h2>		
+
+                        
+                        <h3 class="example-heading">Constructing Training Source-Anchor Video Pairs</h3>
+                        <hr>
+                        <img src="./EPiC/anchor_video.png" alt="anchor_video" width="100%" style="display: block; margin: auto;">
+                            <p></p>
+                            <p>
+                                <p>
+                                    <strong>(a)</strong> Due to errors in point cloud estimation, rendered anchor videos from reconstructed point clouds often exhibit misaligned regions compared to the source video, and also require access to the source video’s camera trajectory for rendering. 
+                                    <strong>(b)</strong> We create anchor videos based on first-frame visibility, which ensures better alignment with the source video and eliminates the need for camera trajectory annotations. 
+                                    <strong>(c)</strong> Our full construction pipeline ends with the addition of dashed rays to simulate the flying-pixel artifacts commonly seen in point-cloud-rendered anchor videos.
+                                </p>
+                                
+                                
+                            </p>
+    
+                            <style>
+                                .example-grid {
+                                  display: grid;
+                                  grid-template-columns: max-content 1fr;
+                                  align-items: stretch;
+                                  gap: 16px;
+                                }
+                              
+                                .text-col {
+                                  display: grid;
+                                  grid-template-rows: repeat(4, 1fr);
+                                  height: 100%;
+                                  text-align: center;
+                                  align-items: center;
+                                  white-space: nowrap;
+                                }
+                              
+                                .text-col.three-rows {
+                                  grid-template-rows: repeat(3, 1fr); /* 局部改动：只这一个是3行 */
+                                }
+                              
+                                .text-col p {
+                                  margin: 0;
+                                  padding: 0;
+                                  line-height: 1.2;
+                                  align-self: center;
+                                }
+                              
+                                .video-col video {
+                                  width: 100%;
+                                  height: auto;
+                                  border: 1px solid #ccc;
+                                }
+                              </style>
+                              
+                            </p>
+                            </p>
+                        </p>
+                        <div class="hover-text" style="margin-top: 24px;">
+                                <div class="card-body">
+                                <h7 class="card-title"> </p> Examples of our anchor video contruction process.                           
+                                </h7>
+                                </div>
+                            </div>
+                              <div class="example-grid">
+                                <div class="text-col three-rows">
+                                  <p>Source<br>Video</p>
+                                  <p>Masked<br>Source<br>Video</p>
+                                  <p>Anchor<br>Video</p>
+                                </div>
+                                <div class="video-col">
+                                  <video src="EPiC/method_videos/data_vis.mp4" controls muted autoplay loop></video>
+                                </div>
+                              </div>
+                              
+                              
+                              <h3 class="example-heading" style="margin-top: 32px;">Model Architecture and Inference Modes</h3>
+                        <hr>
+                        <img src="./EPiC/method.png" alt="sr3ai" width="80%" style="display: block; margin: auto;">
+                            <p></p>
+                            <p>
+                                <strong>(a)</strong> shows an overview of our EPiC framework. EPiC supports multiple inference scenarios. 
+                                <strong>(b)</strong> and <strong>(c)</strong> illustrate our I2V inference scenarios using full and masked point clouds, respectively. 
+                                The masked variant is designed to enable more dynamic video generation by selectively masking the control signals from potentially moving objects in the point clouds and the resulting anchor videos. 
+                                <strong>(d)</strong> depicts the V2V inference scenario employing dynamic point clouds.
+                              </p>                              
+    
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="section">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+    
+                        <h2 class="title is-3">Results with Anchor Videos</h2>		
+
+                        
+                        <h3 class="example-heading">Image-to-Video Results with Two Inference Modes</h3>
+                        <hr>
+    
+                            <style>
+                                .example-grid {
+                                  display: grid;
+                                  grid-template-columns: max-content 1fr;
+                                  align-items: stretch;
+                                  gap: 16px;
+                                }
+                              
+                                .text-col {
+                                  display: grid;
+                                  grid-template-rows: repeat(4, 1fr);
+                                  height: 100%;
+                                  text-align: center;
+                                  align-items: center;
+                                  white-space: nowrap;
+                                }
+                              
+                                .text-col.three-rows {
+                                  grid-template-rows: repeat(3, 1fr); /* 局部改动：只这一个是3行 */
+                                }
+                              
+                                .text-col p {
+                                  margin: 0;
+                                  padding: 0;
+                                  line-height: 1.2;
+                                  align-self: center;
+                                }
+                              
+                                .video-col video {
+                                  width: 100%;
+                                  height: auto;
+                                  border: 1px solid #ccc;
+                                }
+                              </style>
+                              
+                            </p>
+                            </p>
+                        </p>
+                        <div class="hover-text" style="margin-top: 24px;">
+                                <div class="card-body">
+                                <h7 class="card-title"> </p>                           
+                                </h7>
+                                </div>
+                            </div>
+                              <div class="example-grid">
+                                <div class="text-col three-rows">
+                                    <p>Source <br> Image</p>
+                                <p>Anchor Videos <br>rendered <br> from Masked <br> Point Clouds</p>
+                                  <p>Generated <br> Videos with <br> mode (c)</p>
+                                </div>
+                                <div class="video-col">
+                                  <video src="EPiC/method_videos/grid_group_1_left.mp4" controls muted autoplay loop></video>
+                                </div>
+                              </div>
+                              
+                              <div class="example-grid">
+                                <div class="text-col three-rows">
+                                    <p>Source <br> Image</p>
+                                <p>Anchor Videos <br>rendered <br> from Full <br> Point Clouds</p>
+                                  <p>Generated <br> Videos with <br> mode (b)</p>
+                                </div>
+                                <div class="video-col">
+                                  <video src="EPiC/method_videos/grid_group_3_right.mp4" controls muted autoplay loop></video>
+                                </div>
+                              </div>
+                              
+                              <div class="example-grid">
+                                <div class="text-col three-rows">
+                                    <p>Source <br> Image</p>
+                                <p>Anchor Videos <br>rendered <br> from Masked <br> Point Clouds</p>
+                                  <p>Generated <br> Videos with <br> mode (c)</p>
+                                </div>
+                                <div class="video-col">
+                                  <video src="EPiC/method_videos/grid_group_2_left.mp4" controls muted autoplay loop></video>
+                                </div>
+                              </div>
+                              
+                              <div class="example-grid">
+                                <div class="text-col three-rows">
+                                    <p>Source <br> Image</p>
+                                <p>Anchor Videos <br>rendered <br> from Full <br> Point Clouds</p>
+                                  <p>Generated <br> Videos with <br> mode (b)</p>
+                                </div>
+                                <div class="video-col">
+                                  <video src="EPiC/method_videos/grid_group_4_right.mp4" controls muted autoplay loop></video>
+                                </div>
+                              </div>
+                              
+                              
+                    </div>
+                </div>
+            </div>
+        </section>
+
 			
 			
 
