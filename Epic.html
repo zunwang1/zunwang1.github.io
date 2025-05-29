@@ -79,10 +79,10 @@
 							<span class="author-block">University of North Carolina, Chapel Hill</span>
 						</div>
 						
-<!-- 
+
 						<div class="column has-text-centered">
 							<div class="publication-links">
-								<!== PDF Link. ==>
+								<!-- PDF Link. -->
 								<span class="link-block">
 									<a href="https://arxiv.org/pdf/2411.16657" class="external-link button is-normal is-rounded is-dark">
 										<span class="icon">
@@ -91,9 +91,9 @@
 										<span>Paper</span>
 									</a>
 								</span>
-								<!== Code Link. ==>
+								<!-- Code Link. -->
 								<span class="link-block">
-									<a href="https://github.com/wz0919/DreamRunner" class="external-link button is-normal is-rounded is-dark">
+									<a href="https://github.com/wz0919/EPiC" class="external-link button is-normal is-rounded is-dark">
 										<span class="icon">
 											<i class="fab fa-github"></i>
 										</span>
@@ -102,7 +102,22 @@
 								</span>
 							</div>
 
-						</div> -->
+                            <div class="video-col" style="width: 80%; margin: auto;">
+                                <video controls muted autoplay loop style="width: 100%;">
+                                  <source src="./EPiC/demo.mp4" type="video/mp4">
+                                  Your browser does not support the video tag.
+                                </video>
+                              </div>
+                              <div class="hover-text">
+                                <div class="card-body">
+                                  <p class="card-title" style="font-size: 1rem;">
+                                    EPiC supports both precise image-to-video and video-to-video camera control with complex trajectories, with efficient training that takes less than 2 hours on 8×H100 GPUs.
+                                  </p>
+                                </div>
+                              </div>
+                              
+
+						</div>
 					</div>
 				</div>
 			</div>
@@ -761,9 +776,10 @@
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content" style="text-align: left;">
         <h2 class="title">BibTeX</h2>
-        <pre><code>@article{zun2024dreamrunner,
-    author = {Zun Wang and Jialu Li and Han Lin and Jaehong Yoon and Mohit Bansal},
-    title  = {DreamRunner: Fine-Grained Compositional Story-to-Video Video Generation with Retrieval-Augmented Motion Adaptation},
+        <pre><code>@article{zun2025epic,
+    author = {Zun Wang and Jaemin Cho and Jialu Li and Han Lin and Jaehong Yoon and Yue Zhang and Mohit Bansal},
+    title  = {
+        EPiC: Efficient Video Camera Control Learning with Precise Anchor-Video},
 	journal   = {arxiv},
 	year      = {2024},
 	url       = {https://arxiv.org/abs/2411.16657}
