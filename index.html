@@ -8,6 +8,40 @@
   
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<link rel="icon" href="data/unc_icon.png">
+	<style>
+		.news-scroll {
+			max-height: 190px;
+			overflow-y: scroll;
+			padding-right: 20px;
+		}
+		.news-scroll::-webkit-scrollbar {
+			width: 4px;
+		}
+		.news-scroll::-webkit-scrollbar-track {
+			background: #f1f1f1;
+		}
+		.news-scroll::-webkit-scrollbar-thumb {
+			background: #888;
+		}
+		.news-scroll::-webkit-scrollbar-thumb:hover {
+			background: #555;
+		}
+	</style>
+	<script>
+		function toggleAllPapers() {
+			var more = document.getElementById('more-papers');
+			var link = document.getElementById('toggle-all-papers');
+			if (!more || !link) return;
+			var shouldShow = (more.style.display === 'none' || more.style.display === '');
+			if (shouldShow) {
+				more.style.display = 'block';
+				link.textContent = '[show selected]';
+			} else {
+				more.style.display = 'none';
+				link.textContent = '[show more]';
+			}
+		}
+	</script>
 </head>
 
 <body>
@@ -20,7 +54,7 @@
               <p style="text-align:center">
                 <name>Zun Wang</name>
               </p>
-              <p>I'm a first-year CS Ph.D. student at UNC Chapel Hill, advised by <a href="https://www.cs.unc.edu/~mbansal/">Prof. Mohit Bansal</a>. I was a Master of Machine Learning and Computer Vision student at the Australian National University advised by <a href="http://users.cecs.anu.edu.au/~sgould/">Prof. Stephen Gould</a>. In my master time, I also interned at the OpenGVLab, Shanghai AI Laboratory, led by <a href="https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=en">Prof. Yu Qiao</a>.
+              <p>I'm a second-year CS Ph.D. student at UNC Chapel Hill, advised by <a href="https://www.cs.unc.edu/~mbansal/">Prof. Mohit Bansal</a>. I was a Master of Machine Learning and Computer Vision student at the Australian National University advised by <a href="http://users.cecs.anu.edu.au/~sgould/">Prof. Stephen Gould</a>.
                  Before that, I got my bachelor degree in applied mathematics from the University of Science and Technology of China.
               </p>
               <p style="text-align:center">
@@ -59,36 +93,43 @@
           <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
               <heading>News</heading>
-              <p>
-                <ul>
-                  <li>(2025-05) &nbsp New preprint! Check <a href="https://zunwang1.github.io/Epic">EPiC</a> for efficient video camera control learning.
-                  <li>(2025-05) &nbsp  Summer Intern at  🛒 Amazon!
-                  <li>(2025-01) &nbsp  <a href="https://arxiv.org/pdf/2412.08467">Self-refining Data Flywheel</a> for high-quality VLN data generation is accepted to ICLR 2025! 🤖 surpasses human on R2R-VLN for the first time!
-                  <!-- <li>(2024-12) &nbsp  <a href="https://arxiv.org/pdf/2412.08467">New preprint</a> on high-quality VLN data generation. 🤖 surpasses human on R2R-VLN for the first time! -->
-                  <li>(2024-11) &nbsp  New preprint <a href="https://zunwang1.github.io/DreamRunner">DreamRunner✨</a> for storytelling video generation! My first PhD project at UNC MURGE-Lab🥳!
-                  <li>(2024-11) &nbsp  Our VLN survey paper is accepted to TMLR!
-                  <li>(2024-08) &nbsp  Started my Ph.D. in the <a href="https://murgelab.cs.unc.edu/">MURGe Lab</a> at UNC Chapel Hill. Hello UNC😆!
-                  <li>(2024-07) &nbsp  Two paper accepted to ECCV 2024! Congrats Gengze and InternVideo Team!
-                  <li>(2024-04) &nbsp  One paper accepted to TPAMI! Congrats Dong!
-                  <li>(2024-02) &nbsp  One paper accepted to CVPR 2024 as Highlight! Congrats Kunchang!
-                  <li>(2023-10) &nbsp  Attending ICCV2023 @ Paris in person😆! Great pleasure to learn from so many researchers/scholars🥹!
-                  <li>(2023-07) &nbsp  One paper accepted to ICCV 2023 as <strong><font color="#FF0000">Oral presentation</font></strong>!
-                  <li>(2023-07) &nbsp  I'm awarded a <a href="data/WANG, Zun.pdf">Postgraduate Medal for Academic Excellence</a> from ANU!Photos <a href="images/zun-medal-with-chancellor.JPG">here</a>! </li>
-                  <!-- <li>(2022-11) &nbsp  Invited talk at Insight Time of <a href="https://github.com/opendilab">OpenDILab</a> introducing Embodied Navigation! </li> -->
-                  <li>(2023-07) &nbsp  I graduated from Masters of Machine Learning and Computer Vision with Commendation from ANU.
-                  <li>(2022-11) &nbsp I'm awarded the <a href="data/CM1.pdf">Chancellor's Letter of Commendation</a> from ANU.</li>
-                  <li>(2022-09) &nbsp We won <strong>1st place</strong> of the <a href="https://yuankaiqi.github.io/REVERIE_Challenge/">REVERIE VLN Challenge</a> in CSIG 2022!</li>
-                  <li>(2022-06) &nbsp We won <strong>1st place</strong> of the <a href="https://ai.google.com/research/rxr/habitat">RxR-Habitat VLN Competition</a> in Embodied AI Workshop, CVPR 2022!</li>
-                  <li>(2022-03) &nbsp We have a paper accepted to CVPR 2022!</li>
-                </ul>
-              </p>
+              <div class="news-scroll">
+                <p>
+                  <ul>
+                    <li>(2025-10) &nbsp New preprint <a href="https://arxiv.org/pdf/2509.24910">SID</a> for self-generating large-scale navigation demonstrations.
+                    <li>(2025-07) &nbsp One paper accepted to ICCV 2025.
+                    <li>(2025-05) &nbsp New preprint! Check <a href="https://zunwang1.github.io/Epic">EPiC</a> for efficient video camera control learning.
+                    <li>(2025-05) &nbsp  Summer Intern at  🛒 Amazon!
+                    <li>(2025-01) &nbsp  <a href="https://arxiv.org/pdf/2412.08467">Self-refining Data Flywheel</a> for high-quality VLN data generation is accepted to ICLR 2025! 🤖 surpasses human on R2R-VLN for the first time!
+                    <!-- <li>(2024-12) &nbsp  <a href="https://arxiv.org/pdf/2412.08467">New preprint</a> on high-quality VLN data generation. 🤖 surpasses human on R2R-VLN for the first time! -->
+                    <li>(2024-11) &nbsp  New preprint <a href="https://zunwang1.github.io/DreamRunner">DreamRunner✨</a> for storytelling video generation! My first PhD project at UNC MURGE-Lab🥳!
+                    <li>(2024-11) &nbsp  Our VLN survey paper is accepted to TMLR!
+                    <li>(2024-08) &nbsp  Started my Ph.D. in the <a href="https://murgelab.cs.unc.edu/">MURGe Lab</a> at UNC Chapel Hill. Hello UNC😆!
+                    <li>(2024-07) &nbsp  Two paper accepted to ECCV 2024! Congrats Gengze and InternVideo Team!
+                    <li>(2024-04) &nbsp  One paper accepted to TPAMI! Congrats Dong!
+                    <li>(2024-02) &nbsp  One paper accepted to CVPR 2024 as Highlight! Congrats Kunchang!
+                    <li>(2023-10) &nbsp  Attending ICCV2023 @ Paris in person😆! Great pleasure to learn from so many researchers/scholars🥹!
+                    <li>(2023-07) &nbsp  One paper accepted to ICCV 2023 as <strong><font color="#FF0000">Oral presentation</font></strong>!
+                    <li>(2023-07) &nbsp  I'm awarded a <a href="data/WANG, Zun.pdf">Postgraduate Medal for Academic Excellence</a> from ANU!Photos <a href="images/zun-medal-with-chancellor.JPG">here</a>! </li>
+                    <!-- <li>(2022-11) &nbsp  Invited talk at Insight Time of <a href="https://github.com/opendilab">OpenDILab</a> introducing Embodied Navigation! </li> -->
+                    <li>(2023-07) &nbsp  I graduated from Masters of Machine Learning and Computer Vision with Commendation from ANU.
+                    <li>(2022-11) &nbsp I'm awarded the <a href="data/CM1.pdf">Chancellor's Letter of Commendation</a> from ANU.</li>
+                    <li>(2022-09) &nbsp We won <strong>1st place</strong> of the <a href="https://yuankaiqi.github.io/REVERIE_Challenge/">REVERIE VLN Challenge</a> in CSIG 2022!</li>
+                    <li>(2022-06) &nbsp We won <strong>1st place</strong> of the <a href="https://ai.google.com/research/rxr/habitat">RxR-Habitat VLN Competition</a> in Embodied AI Workshop, CVPR 2022!</li>
+                    <li>(2022-03) &nbsp We have a paper accepted to CVPR 2022!</li>
+                  </ul>
+                </p>
+              </div>
             </td>
           </tr>
         </tbody></table>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr>
           <td style="padding:20px;width:100%;vertical-align:middle">
-            <heading>Papers</heading>
+            <heading>Selected Papers</heading>
+            <p style="margin-top:5px;margin-bottom:5px;font-size:small;">
+              * denotes equal contribution, † denotes project lead
+            </p>
           </td>
 
         </tr>
@@ -106,7 +147,7 @@
             <br>
             <strong>Zun Wang</strong>, <e>Jaemin Cho, Jialu Li, Han Lin, Jaehong Yoon, Yue Zhang, Mohit Bansal</e>
             <br>
-          <em>preprint, 2025</em>
+          <em>preprint</em>
           <br>
           <a href="http://arxiv.org/abs/2505.21876">paper</a> /
           <a href="https://github.com/wz0919/EPiC">code</a> /
@@ -127,7 +168,7 @@
             <br>
             <strong>Zun Wang</strong>, <e>Jialu Li, Han Lin, Jaehong Yoon, Mohit Bansal</e>
             <br>
-          <em>Preprint</em>
+          <em>preprint</em>
           <br>
           <a href="https://arxiv.org/pdf/2411.16657">paper</a> /
           <a href="https://github.com/wz0919/DreamRunner">code</a> /
@@ -160,6 +201,54 @@
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <td style="padding:20px;width:25%;vertical-align:middle">
           <div>
+                <img src='images/sid.png' width="160" height="100">
+          </div>
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+            <papertitle>Learning Goal-Oriented Language-Guided Navigation with Self-Improving Demonstrations at Scale</papertitle>
+            <br>
+            Songze Li*, <strong>Zun Wang*†</strong>, <e>Gengze Zhou, Jialu Li, Xiangyu Zeng, Limin Wang, Yu Qiao, Qi Wu, Mohit Bansal, Yi Wang</e>
+            <br>
+          <em>preprint</em>
+          <br>
+          <a href="https://arxiv.org/pdf/2509.24910">paper</a> /
+          <a href="https://github.com/OpenGVLab/SID-VLN">code</a>
+        </td>
+      </tr>
+      <tr>
+      </tbody></table>
+
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <div>
+            <img src='images/scalevln.jpg' width="160" height="100">
+          </div>
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+            <papertitle>Scaling Data Generation in Vision-and-Language Navigation</papertitle>
+          <br>
+          <strong>Zun Wang*</strong>, <e>Jialu Li*, Yicong Hong*, Yi Wang, Qi Wu, Mohit Bansal, Stephen Gould, Hao Tan, Yu Qiao</e>
+          <br>
+          <em>ICCV</em>, 2023, <font color="#FF0000"><strong>Oral presentation (1.9%)</strong></font> </em>
+          <br>
+          <a href="https://arxiv.org/pdf/2307.15644">paper</a> /
+          <a href="https://github.com/wz0919/ScaleVLN">code</a> /
+          <a href="https://scalevln.github.io/">project page</a>
+        </td>
+      </tr>
+
+    </tr>
+  </tbody></table>
+
+      <p style="padding:0 20px 20px 20px;">
+        <a id="toggle-all-papers" href="javascript:void(0)" onclick="toggleAllPapers()" style="color: #1772d0; text-decoration: none; font-weight: bold;">[full list]</a>
+      </p>
+      
+      <div id="more-papers" style="display:none;">
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <div>
                 <img src='images/same.png' width="160" height="100">
           </div>
         </td>
@@ -169,7 +258,7 @@
             <br>
             Gengze Zhou, Yicong Hong, <strong>Zun Wang</strong>, Chongyang Zhao, Mohit Bansal, Qi Wu
             <br>
-          <em>preprint</em>
+          <em>ICCV, 2025</em>
           <br>
           <a href="https://arxiv.org/abs/2412.05552">paper</a> / <a href="https://github.com/GengzeZhou/SAME">code</a>
         </td>
@@ -272,29 +361,6 @@
     </tr>
     <tr>
     </tbody></table>
-  
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr>
-        <td style="padding:20px;width:25%;vertical-align:middle">
-          <div>
-            <img src='images/scalevln.jpg' width="160" height="100">
-          </div>
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-            <papertitle>Scaling Data Generation in Vision-and-Language Navigation</papertitle>
-          <br>
-          <strong>Zun Wang*</strong>, <e>Jialu Li*, Yicong Hong*, Yi Wang, Qi Wu, Mohit Bansal, Stephen Gould, Hao Tan, Yu Qiao</e>
-          <br>
-          <em>ICCV</em>, 2023, <font color="#FF0000"><strong>Oral presentation (1.9%)</strong></font> </em>
-          <br>
-          <a href="https://arxiv.org/pdf/2307.15644">paper</a> /
-          <a href="https://github.com/wz0919/ScaleVLN">code</a> /
-          <a href="https://scalevln.github.io/">project page</a>
-        </td>
-      </tr>
-
-    </tr>
-  </tbody></table>
 
     <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr>
@@ -358,103 +424,22 @@
           </tr>
         </tr>
     </tbody></table>
+      </div>
 
-        <!-- <details>
-          <summary><b>More Publications</b></summary><div>
+</html>
 
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-              <tbody>
-                <tr>
-                  <td style="padding:20px;width:25%;vertical-align:middle">
-                    <div>
-                      <img src='images/rxr-habitat-winner.jpg' width="160">
-                    </div>
-                  </td>
-                  <td style="padding:20px;width:75%;vertical-align:middle">
-                    <papertitle>NavGPT-2: Unleashing Navigational Reasoning Capability for Large Vision-Language Models</papertitle>
-                    <br>
-                    <e>Gengze Zhou</e>, <e>Yicong Hong</e>, <strong>Zun Wang</strong>, <e>Xin Eric Wang</e>, <e>Qi Wu</e>
-                    <br>
-                    <em>ECCV 2024</em>
-                    <br>
-                    <a href="https://arxiv.org/pdf/2407.12366">paper</a> 
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            
 
-    </div></details>
-        
-
-  </br><br>   -->
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <tr>
-        <td style="padding:20px;width:100%;vertical-align:middle">
-          <heading>Competitions</heading>
-        </td>
-      </tr>
-      </tbody></table>
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <div>
-                  <img src='images/reverie.gif' width="160">
-                </div>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                  <papertitle> REVERIE Challenge @ CSIG 2022 </papertitle>
-                <br>
-                <e>Our team BPT (<strong>Zun Wang</strong>, Yi Wang, Yinan He, <a href="https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=en">Yu Qiao</a>) is the <font color="#FF0000">Winner</font> of both channels (out of 50+ teams).</e>
-                <br>
-                <a href="https://github.com/YuankaiQi/REVERIE_Challenge/blob/master/2022-Winner-Tech-Report.pdf">report</a> / 
-                <a href="data/赛道1 冠军.pdf">certificate (channel 1)</a> / 
-                <a href="data/赛道2冠军.pdf">certificate (channel 2)</a> /
-                <a href="https://yuankaiqi.github.io/REVERIE_Challenge/leaderboard.html">leaderboard</a>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <div>
-                  <img src='images/rxr-habitat.gif' width="160">
-                </div>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                  <papertitle> RxR-Habitat Competition @ CVPR 2022 </papertitle>
-                <br>
-                <e>Our team Joyboy (Dong An*, <strong>Zun Wang*</strong>, Yangguang Li, Yi Wang, Yicong Hong, Yan Huang, Liang Wang,  <a href="https://amandajshao.github.io/">Jing Shao</a>) is the <font color="#FF0000">Winner</font> of the competition. Our solution improves SoTA performance from 37% to 55%.</e>
-                <br>
-                <a href="https://arxiv.org/pdf/2206.11610.pdf">report</a> / 
-                <a href="data/rxr-habitat-cert.pdf">certificate</a> /
-                <a href="https://ai.google.com/research/rxr/habitat">leaderboard</a>
-              </td>
-            </tr>
-          </tr>			
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Collaborators</heading>
-              <p>
-                I work closely and discuss deeply with my friend <a href="https://yiconghong.me/">Dr. Yicong Hong</a>. I also share lots of VLN thinkings and collaborate with my friend <a href="https://marsaki.github.io/">Dong An</a>.
-              </p>
-            </td>
-          </tr>
-    
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr>
-        <td style="padding:0px">
-          <br>
-          <p style="text-align:right;font-size:small;">
-            <a href= "https://jonbarron.info/">Source pages from here.</a>
-          </p>
-        </td>
-      </tr>
-    </tbody></table>
-  </td>
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<tr>
+<td style="padding:0px">
+<br>
+<p style="text-align:right;font-size:small;">
+  <a href= "https://jonbarron.info/">Source pages from here.</a>
+</p>
+</td>
+</tr>
+</tbody></table>
+</td>
 </tr>
 </table>
 </body>
-
-</html>
