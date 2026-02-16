@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="AnchorWeave: World-Consistent Video Generation with Retrieved Local Spatial Memories">
+	<meta name="keywords"
+		content="video,video generation,spatial consistency,memory,diffusion,3D reconstruction,camera control,genai">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AnchorWeave</title>
+
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-PYVRSFMDRL');
+	</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./DreamRunner/static/css/bulma.min.css">
+	<link rel="stylesheet" href="./DreamRunner/static/css/bulma-carousel.min.css">
+	<link rel="stylesheet" href="./DreamRunner/static/css/bulma-slider.min.css">
+	<link rel="stylesheet" href="./DreamRunner/static/css/fontawesome.all.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+	<link rel="stylesheet" href="./DreamRunner/static/css/index.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script defer src="./DreamRunner/static/js/fontawesome.all.min.js"></script>
+	<script src="./DreamRunner/static/js/bulma-carousel.min.js"></script>
+	<script src="./DreamRunner/static/js/bulma-slider.min.js"></script>
+	<script src="./DreamRunner/static/js/index.js"></script>
+</head>
+
+<body>
+	<section class="hero">
+		<div class="hero-body">
+			<div class="container is-max-desktop">
+				<div class="columns is-centered">
+					<div class="column has-text-centered">
+						<h1 class="title is-1 publication-title">
+							<b>AnchorWeave</b>: World-Consistent Video Generation<br>
+							with Retrieved Local Spatial Memories
+						</h1>
+						<div class="is-size-5 publication-authors">
+							<span class="author-block"><a href="https://zunwang1.github.io/">Zun Wang</a><sup>1</sup></span>
+							<span class="author-block" style="padding-left:16px"><a href="https://hl-hanlin.github.io/">Han Lin</a><sup>1</sup></span>
+							<span class="author-block" style="padding-left:16px"><a href="https://jaehong31.github.io">Jaehong Yoon</a><sup>2</sup></span>
+							<span class="author-block" style="padding-left:16px"><a href="https://j-min.io/">Jaemin Cho</a><sup>3</sup></span>
+							<span class="author-block" style="padding-left:16px"><a href="https://zhangyuejoslin.github.io/">Yue Zhang</a><sup>1</sup></span>
+							<span class="author-block" style="padding-left:16px"><a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a><sup>1</sup></span>
+						</div>
+						<div class="is-size-5 publication-authors">
+							<span class="author-block"><sup>1</sup>University of North Carolina, Chapel Hill</span>
+							<span class="author-block" style="padding-left:24px"><sup>2</sup>NTU Singapore</span>
+							<span class="author-block" style="padding-left:24px"><sup>3</sup>AI2</span>
+						</div>
+						<div class="column has-text-centered">
+							<div class="publication-links">
+								<span class="link-block">
+									<a href="#" class="external-link button is-normal is-rounded is-dark">
+										<span class="icon"><i class="fas fa-file-pdf"></i></span>
+										<span>Paper</span>
+									</a>
+								</span>
+								<span class="link-block">
+									<a href="#" class="external-link button is-normal is-rounded is-dark">
+										<span class="icon"><i class="fab fa-github"></i></span>
+										<span>Code</span>
+									</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Teaser placeholder -->
+	<section class="section">
+		<div class="container is-max-desktop" style="margin-top: -100px;">
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<video controls muted autoplay loop style="width: 100%; border-radius: 8px;">
+						<source src="./AnchorWeave/anchorweave_demo.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Abstract -->
+	<section class="section">
+		<div class="container is-max-desktop">
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<h2 class="title is-3">Abstract</h2>
+					<div class="content has-text-justified">
+						<p>
+							Maintaining spatial world consistency over long horizons remains a central challenge for camera-controllable video generation. Existing memory-based approaches often condition generation on globally reconstructed 3D scenes by rendering anchor videos from the reconstructed geometry in the history. However, reconstructing a global 3D scene from multiple views inevitably introduces cross-view misalignment, as pose and depth estimation errors cause the same surfaces to be reconstructed at slightly different 3D locations across views. When fused, these inconsistencies accumulate into noisy geometry that contaminates the conditioning signals and degrades generation quality.
+						</p>
+						<p>
+							We introduce <b>AnchorWeave</b>, a memory-augmented video generation framework that replaces a single misaligned global memory with multiple clean local geometric memories and learns to reconcile their cross-view inconsistencies. To this end, AnchorWeave performs coverage-driven local memory retrieval aligned with the target trajectory and integrates the selected local memories through a multi-anchor weaving controller during generation. Extensive experiments demonstrate that AnchorWeave significantly improves long-term scene consistency while maintaining strong visual quality, with ablation and analysis studies further validating the effectiveness of local geometric conditioning, multi-anchor control, and coverage-driven retrieval.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Long-Horizon World Exploration Gallery -->
+	<section class="section">
+		<div class="container is-max-desktop" style="max-width: 2500px !important;">
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<h2 class="title is-3" id="long-horizon-gallery">Long-Horizon World Exploration</h2>
+					<br>
+					<div class="content is-centered has-text-centered">
+						<div class="hover-text">
+							<div class="card-body">
+								<h7 class="card-title">AnchorWeave maintains world consistency over long camera trajectories. First frame (conditioning image) on top; generated video below.</h7>
+							</div>
+						</div>
+						<style>
+							.long-horizon-gallery {
+								display: grid;
+								grid-template-columns: repeat(3, 1fr);
+								gap: 2rem;
+								max-width: 1400px;
+								margin: 0 auto;
+							}
+							.long-horizon-item {
+								display: flex;
+								flex-direction: column;
+								gap: 8px;
+								align-items: center;
+							}
+							.long-horizon-item .img-col { width: 100%; display: flex; flex-direction: column; align-items: center; }
+							.long-horizon-item .img-col img {
+								width: 66.67%;
+								height: auto;
+								border-radius: 6px;
+								border: 1px solid #e0e0e0;
+							}
+							.long-horizon-item .video-col { width: 100%; display: flex; flex-direction: column; align-items: center; }
+							.long-horizon-item .video-col video {
+								width: 100%;
+								height: auto;
+								border-radius: 6px;
+								border: 1px solid #e0e0e0;
+							}
+							.long-horizon-item .caption {
+								font-size: 0.85rem;
+								color: #555;
+								margin-top: 6px;
+							}
+							@media (max-width: 1100px) {
+								.long-horizon-gallery { grid-template-columns: repeat(2, 1fr); }
+							}
+							@media (max-width: 700px) {
+								.long-horizon-gallery { grid-template-columns: 1fr; }
+							}
+						</style>
+						<div class="long-horizon-gallery">
+							<div class="long-horizon-item">
+								<div class="img-col"><img src="./AnchorWeave/long_images/alley.png" alt="alley"><div class="caption">First Frame</div></div>
+								<div class="video-col"><video controls muted autoplay loop><source src="./AnchorWeave/long_videos/alley.mp4" type="video/mp4"></video><div class="caption">Generated Video</div></div>
+							</div>
+							<div class="long-horizon-item">
+								<div class="img-col"><img src="./AnchorWeave/long_images/bedroom.png" alt="bedroom"><div class="caption">First Frame</div></div>
+								<div class="video-col"><video controls muted autoplay loop><source src="./AnchorWeave/long_videos/bedroom.mp4" type="video/mp4"></video><div class="caption">Generated Video</div></div>
+							</div>
+							<div class="long-horizon-item">
+								<div class="img-col"><img src="./AnchorWeave/long_images/corridor.png" alt="corridor"><div class="caption">First Frame</div></div>
+								<div class="video-col"><video controls muted autoplay loop><source src="./AnchorWeave/long_videos/corridor.mp4" type="video/mp4"></video><div class="caption">Generated Video</div></div>
+							</div>
+							<div class="long-horizon-item">
+								<div class="img-col"><img src="./AnchorWeave/long_images/forest.png" alt="forest"><div class="caption">First Frame</div></div>
+								<div class="video-col"><video controls muted autoplay loop><source src="./AnchorWeave/long_videos/forest.mp4" type="video/mp4"></video><div class="caption">Generated Video</div></div>
+							</div>
+							<div class="long-horizon-item">
+								<div class="img-col"><img src="./AnchorWeave/long_images/indoor.jpg" alt="indoor"><div class="caption">First Frame</div></div>
+								<div class="video-col"><video controls muted autoplay loop><source src="./AnchorWeave/long_videos/indoor.mp4" type="video/mp4"></video><div class="caption">Generated Video</div></div>
+							</div>
+							<div class="long-horizon-item">
+								<div class="img-col"><img src="./AnchorWeave/long_images/japan.jpg" alt="japan"><div class="caption">First Frame</div></div>
+								<div class="video-col"><video controls muted autoplay loop><source src="./AnchorWeave/long_videos/japan.mp4" type="video/mp4"></video><div class="caption">Generated Video</div></div>
+							</div>
+							<div class="long-horizon-item">
+								<div class="img-col"><img src="./AnchorWeave/long_images/mountain.png" alt="mountain"><div class="caption">First Frame</div></div>
+								<div class="video-col"><video controls muted autoplay loop><source src="./AnchorWeave/long_videos/mountain.mp4" type="video/mp4"></video><div class="caption">Generated Video</div></div>
+							</div>
+							<div class="long-horizon-item">
+								<div class="img-col"><img src="./AnchorWeave/long_images/ship.png" alt="ship"><div class="caption">First Frame</div></div>
+								<div class="video-col"><video controls muted autoplay loop><source src="./AnchorWeave/long_videos/ship.mp4" type="video/mp4"></video><div class="caption">Generated Video</div></div>
+							</div>
+							<div class="long-horizon-item">
+								<div class="img-col"><img src="./AnchorWeave/long_images/zelda.jpg" alt="zelda"><div class="caption">First Frame</div></div>
+								<div class="video-col"><video controls muted autoplay loop><source src="./AnchorWeave/long_videos/zelda.mp4" type="video/mp4"></video><div class="caption">Generated Video</div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Method -->
+	<section class="section">
+		<div class="container is-max-desktop" style="max-width: 2500px !important;">
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<h2 class="title is-3" id="method">AnchorWeave</h2>
+					<h3 class="example-heading" style="margin-top: 0.5rem;">Motivation: Global 3D vs Local 3D</h3>
+					<br>
+					<div class="content has-text-centered">
+						<img src="./AnchorWeave/method1.png" alt="Method" width="66.67%" style="display: block; margin: auto; border-radius: 6px;">
+						<p style="margin-top: 1rem; text-align: justify;">
+							Global 3D reconstruction accumulates cross-view misalignment, introducing artifacts in the reconstructed geometry ((a), middle), which propagate to the generated video as hallucinations ((b), red boxes).
+							In contrast, per-frame local geometry inherently avoids cross-view misalignment and therefore remains clean ((a), right).
+							Conditioning on multiple retrieved local geometric anchors, AnchorWeave maintains strong spatial consistency with the historical frames ((c), white and green boxes).
+						</p>
+						<h3 class="example-heading" style="margin-top: 2rem;">Coverage-driven memory retrieval pipeline</h3>
+						<br>
+						<img src="./AnchorWeave/method2.png" alt="Coverage-driven retrieval" width="66.67%" style="display: block; margin: auto; border-radius: 6px;">
+						<p style="margin-top: 1rem; text-align: justify;">
+							Given a target camera, we first select local memories whose camera FoVs partially overlap with the target camera view to form a candidate memory pool. At each retrieval step, we greedily select the memory that maximizes the newly covered visible area.
+							Points invisible to the target camera are shown in <span style="background: #e0e0e0; padding: 0 4px;">gray</span>.
+							S<sub>i</sub>–M<sub>j</sub> denotes memory <i>j</i> selected at retrieval step <i>i</i>, and the red box indicates the retrieved memory.
+							In S<sub>i</sub>-M<sub>j</sub>, regions already covered by previously retrieved memories are highlighted in <span style="background: #90EE90; padding: 0 4px;">green</span> and only newly covered regions retain their original RGB colors. No green regions appear in S1-M<sub>j</sub> since 1st-step's coverage is empty.
+							Retrieval terminates when the uncovered region is 0%, the retrieval budget <i>K</i> is exhausted, or the remaining memory pool is empty. For clarity, coverage is computed with a single frame here, while in practice is aggregated over multiple frames per chunk.
+						</p>
+						<h3 class="example-heading" style="margin-top: 2rem;">Architecture of multi-anchor weaving controller</h3>
+						<br>
+						<img src="./AnchorWeave/method3.png" alt="Multi-anchor weaving controller" width="66.67%" style="display: block; margin: auto; border-radius: 6px;">
+						<p style="margin-top: 1rem; text-align: justify;">
+							Anchors are encoded and jointly processed by a shared attention block, followed by camera-pose-guided fusion to produce a unified control signal injected into the backbone model. Camera 1 to <i>K</i> represent the retrieved-to-target camera poses for the 1 to <i>K</i> anchor videos, where each denotes the relative pose between the camera associated with a retrieved local point cloud and the target camera, measuring their viewpoint proximity. Camera 0 is the relative target camera trajectory.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Visualization Process -->
+	<section class="section">
+		<div class="container is-max-desktop" style="max-width: 2500px !important;">
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<h2 class="title is-3" id="vis-process">AnchorWeave Generation Visualization</h2>
+					<br>
+					<div class="content is-centered has-text-centered">
+						<div class="hover-text">
+							<div class="card-body">
+								<h7 class="card-title">Historical Context (left) vs. Generation Condition and Results (right).</h7>
+							</div>
+						</div>
+						<style>
+							.vis-process-row {
+								display: grid;
+								grid-template-columns: 1fr 4fr;
+								gap: 24px;
+								align-items: center;
+								margin-bottom: 2rem;
+								max-width: 1200px;
+								margin-left: auto;
+								margin-right: auto;
+							}
+							.vis-process-row:last-child { margin-bottom: 0; }
+							.vis-process-row .vis-col { width: 100%; }
+							.vis-process-row .vis-col video {
+								width: 100%;
+								height: auto;
+								border-radius: 6px;
+								border: 1px solid #e0e0e0;
+							}
+							.vis-process-row .vis-col .caption {
+								font-size: 0.85rem;
+								color: #555;
+								margin-top: 6px;
+							}
+							@media (max-width: 700px) {
+								.vis-process-row { grid-template-columns: 1fr; }
+							}
+						</style>
+						<div class="vis-process-gallery">
+							<div class="vis-process-row">
+								<div class="vis-col"><video controls muted autoplay loop><source src="./AnchorWeave/vis_process/DL3DV-10K_301e0601debd9fc4d3d0b5d082fac255caea3d7ccf3c64458aedb8e664ded2fa_1_gt.mp4" type="video/mp4"></video><div class="caption">Historical Context</div></div>
+								<div class="vis-col"><video controls muted autoplay loop><source src="./AnchorWeave/vis_process/DL3DV-10K_301e0601debd9fc4d3d0b5d082fac255caea3d7ccf3c64458aedb8e664ded2fa_1_merged.mp4" type="video/mp4"></video></div>
+							</div>
+							<div class="vis-process-row">
+								<div class="vis-col"><video controls muted autoplay loop><source src="./AnchorWeave/vis_process/DL3DV-10K_413221c4700c41ee951b22b84cbce0c9d0a5fc2c6dcf743f1f41c3fc6b0b2891_0_gt.mp4" type="video/mp4"></video><div class="caption">Historical Context</div></div>
+								<div class="vis-col"><video controls muted autoplay loop><source src="./AnchorWeave/vis_process/DL3DV-10K_413221c4700c41ee951b22b84cbce0c9d0a5fc2c6dcf743f1f41c3fc6b0b2891_0_merged.mp4" type="video/mp4"></video></div>
+							</div>
+							<div class="vis-process-row">
+								<div class="vis-col"><video controls muted autoplay loop><source src="./AnchorWeave/vis_process/RealEstate10K_a8964dbe9bd1945e_gt.mp4" type="video/mp4"></video><div class="caption">Historical Context</div></div>
+								<div class="vis-col"><video controls muted autoplay loop><source src="./AnchorWeave/vis_process/RealEstate10K_a8964dbe9bd1945e_merged.mp4" type="video/mp4"></video></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Comparison placeholder -->
+	<section class="section">
+		<div class="container is-max-desktop" style="max-width: 2500px !important;">
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<h2 class="title is-3" id="comparison">Comparison</h2>
+					<br>
+					<div class="content is-centered has-text-centered">
+						<h3 class="example-heading">Comparison with Previous Methods</h3>
+						<hr>
+						<div class="hover-text">
+							<div class="card-body">
+								<h7 class="card-title">Qualitative comparison with baseline methods.</h7>
+							</div>
+						</div>
+						<p class="has-text-centered" style="color: #888; padding: 80px 20px; border: 2px dashed #ddd; border-radius: 8px;">
+							[Comparison videos placeholder – add comparison videos here]
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Citation -->
+	<section class="section">
+		<div class="container is-max-desktop">
+			<div class="columns is-centered">
+				<div class="column is-four-fifths">
+					<h2 class="title is-3">Citation</h2>
+					<div class="content has-text-justified">
+						<pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>@article{wang2025anchorweave,
+  title={AnchorWeave: World-Consistent Video Generation with Retrieved Local Spatial Memories},
+  author={Wang, Zun and Lin, Han and Yoon, Jaehong and Cho, Jaemin and Zhang, Yue and Bansal, Mohit},
+  journal={arXiv preprint},
+  year={2025}
+}</code></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>
