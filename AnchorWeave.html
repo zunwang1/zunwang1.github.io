@@ -83,7 +83,7 @@
 			<div class="columns is-centered has-text-centered">
 				<div class="column is-four-fifths">
 					<video controls muted autoplay loop style="width: 100%; border-radius: 8px;">
-						<source src="./AnchorWeave/anchorweave_demo.mp4" type="video/mp4">
+						<source src="./AnchorWeave/anchorweaver_teaser.mp4" type="video/mp4">
 						Your browser does not support the video tag.
 					</video>
 				</div>
@@ -118,9 +118,9 @@
 					<h2 class="title is-3" id="long-horizon-gallery">Long-Horizon World Exploration</h2>
 					<br>
 					<div class="content is-centered has-text-centered">
-						<div class="hover-text">
+						<div class="hover-text" style="margin-bottom: 2.5rem;">
 							<div class="card-body">
-								<h7 class="card-title">AnchorWeave maintains world consistency over long camera trajectories. First frame (conditioning image) on top; generated video below.</h7>
+								<h7 class="card-title">AnchorWeave maintains world consistency over long camera trajectories. First frame (conditioning image) on top; generated video below. Starting from the 1st frame, AnchorWeave generates three 81-frame segments iteratively, each utilizing the memory from previous generations, which are then composed to form the full video. The backbone model is Wan2.2 5B.</h7>
 							</div>
 						</div>
 						<style>
@@ -252,7 +252,7 @@
 					<h2 class="title is-3" id="vis-process">AnchorWeave Generation Visualization</h2>
 					<br>
 					<div class="content is-centered has-text-centered">
-						<div class="hover-text">
+						<div class="hover-text" style="margin-bottom: 2.5rem;">
 							<div class="card-body">
 								<h7 class="card-title">Historical Context (left) vs. Generation Condition and Results (right).</h7>
 							</div>
@@ -315,14 +315,31 @@
 					<div class="content is-centered has-text-centered">
 						<h3 class="example-heading">Comparison with Previous Methods</h3>
 						<hr>
-						<div class="hover-text">
+						<div class="hover-text" style="margin-bottom: 2.5rem;">
 							<div class="card-body">
-								<h7 class="card-title">Qualitative comparison with baseline methods.</h7>
+								<h7 class="card-title">Qualitative comparison with baseline methods under revisit setting.</h7>
 							</div>
 						</div>
-						<p class="has-text-centered" style="color: #888; padding: 80px 20px; border: 2px dashed #ddd; border-radius: 8px;">
-							[Comparison videos placeholder – add comparison videos here]
-						</p>
+						<style>
+							.baseline-com-grid {
+								display: grid;
+								grid-template-columns: 1fr;
+								gap: 1.5rem;
+								max-width: 1000px;
+								margin: 0 auto;
+							}
+							.baseline-com-grid video {
+								width: 100%;
+								height: auto;
+								border-radius: 6px;
+								border: 1px solid #e0e0e0;
+							}
+						</style>
+						<div class="baseline-com-grid">
+							<video controls muted autoplay loop><source src="./AnchorWeave/baseline_com/DL3DV-10K_01f383e9bcc9b36684b4b04603596546a98fe260b762f8cddda76463a43252ca_0_merged.mp4" type="video/mp4"></video>
+							<video controls muted autoplay loop><source src="./AnchorWeave/baseline_com/DL3DV-10K_0352ff75497c22744abe34a8118f81429a64c20aa0be7edd4f861285b392c0d5_0_merged.mp4" type="video/mp4"></video>
+							<video controls muted autoplay loop><source src="./AnchorWeave/baseline_com/DL3DV-10K_9515b805198ec41ab6a3f6632cd0fb247ef3144fa2bca244ca42fa23039c4e47_1_merged.mp4" type="video/mp4"></video>
+						</div>
 					</div>
 				</div>
 			</div>
