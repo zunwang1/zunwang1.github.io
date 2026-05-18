@@ -48,35 +48,40 @@
 				<div class="columns is-centered">
 					<div class="column has-text-centered">
 						<h1 class="title is-1 publication-title">
-							<!-- <span style="color: rgb(237, 178, 13);">C</span><span style="color: rgb(112, 48, 160);">T</span><span style="color: rgb(0, 176, 240);">R</span><span style="color: rgb(215, 49, 136);">L</span>-Adapter -->
 							 <b>EPiC</b>: Efficient Video Camera Control Learning </br> with Precise Anchor-Video Guidance
 						</h1>
+						<div class="is-size-4" style="margin-bottom: 0.5rem;">
+							<b>ICML 2026</b>
+						</div>
 						<div class="is-size-5 publication-authors">
 							<span class="author-block">
-								<a href="https://zunwang1.github.io/">Zun Wang</a>
+								<a href="https://zunwang1.github.io/">Zun Wang</a><sup>1</sup>
 							</span> &nbsp;
                             <span class="author-block" , style="padding-left:30px">
-								<a href="https://j-min.io/">Jaemin Cho</a>
+								<a href="https://j-min.io/">Jaemin Cho</a><sup>2,4</sup>
 							</span> &nbsp;
 							<span class="author-block" , style="padding-left:30px">
-								<a href="https://jialuli-luka.github.io/">Jialu Li</a>
+								<a href="https://jialuli-luka.github.io/">Jialu Li</a><sup>1</sup>
 							</span> &nbsp;
 							<span class="author-block", style="padding-left:30px">
-								<a href="https://hl-hanlin.github.io/">Han Lin</a>
+								<a href="https://hl-hanlin.github.io/">Han Lin</a><sup>1</sup>
 							</span> &nbsp;
 							<span class="author-block" , style="padding-left:30px">
-								<a href="https://jaehong31.github.io">Jaehong Yoon</a>
+								<a href="https://jaehong31.github.io">Jaehong Yoon</a><sup>3</sup>
 							</span> &nbsp;
                             <span class="author-block" , style="padding-left:30px">
-								<a href="https://zhangyuejoslin.github.io/">Yue Zhang</a>
+								<a href="https://zhangyuejoslin.github.io/">Yue Zhang</a><sup>1</sup>
 							</span> &nbsp;
 							<span class="author-block" , style="padding-left:30px">
-								<a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a>
+								<a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a><sup>1</sup>
 							</span>
 						</div>
 
 						<div class="is-size-5 publication-authors">
-							<span class="author-block">University of North Carolina, Chapel Hill</span>
+							<span class="author-block"><sup>1</sup>University of North Carolina, Chapel Hill</span>
+							<span class="author-block" style="padding-left:24px"><sup>2</sup>Johns Hopkins University</span>
+							<span class="author-block" style="padding-left:24px"><sup>3</sup>NTU Singapore</span>
+							<span class="author-block" style="padding-left:24px"><sup>4</sup>AI2</span>
 						</div>
 						
 
@@ -189,6 +194,18 @@
                   <div class="video-col">
                     <video controls muted autoplay loop>
                       <source src="./EPiC/videos-i2v/i2v_demo.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="hover-text" style="margin-top: 2rem;">
+                    <div class="card-body">
+                      <h7 class="card-title">EPiC with large camera motion. The first frame is the conditioning image.
+                      </h7>
+                    </div>
+                  </div>
+                  <div class="video-col">
+                    <video controls muted autoplay loop>
+                      <source src="./EPiC/videos-i2v/large_motion.mp4" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -770,20 +787,460 @@
             </div>
         </section>
 
-			
-			
+        <section class="section">
+            <div class="container is-max-desktop" style="max-width: 2500px !important;">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3" id="comparison-i2v">Comparison with Previous Methods (Image-to-Video)</h2>
+                        <br>
+                        <div class="content is-centered has-text-centered">
+                            <h3 class="example-heading" id="comparison-i2v-viewcrafter">Comparison with ViewCrafter</h3>
+                            <hr>
+                            <div class="hover-text">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        Qualitative comparison on RealEstate10k (ViewCrafter vs. EPiC). EPiC produces better video quality.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(3, 1fr);">
+                                    <p>EPiC<br>Anchor<br>Video<br></p>
+                                    <p><b>EPiC<br>Output<br>Video<br></b></p>
+                                    <p>ViewCrafter<br>Output<br>Video<br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/viewcrafter/viewcrafter_i2v_re10k.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        Qualitative comparison on MiraData (ViewCrafter vs. EPiC). EPiC produces better video quality.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(3, 1fr);">
+                                    <p>EPiC<br>Anchor<br>Video<br></p>
+                                    <p><b>EPiC<br>Output<br>Video<br></b></p>
+                                    <p>ViewCrafter<br>Output<br>Video<br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/viewcrafter/viewcrafter_i2v_miradata.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+
+                            <h3 class="example-heading" style="margin-top: 2rem;" id="comparison-i2v-flovd">Comparison with FloVD</h3>
+                            <hr>
+                            <div class="hover-text">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        Qualitative comparison on RealEstate10k (FloVD vs. EPiC). Video quality is comparable, while EPiC camera motion is more accurate.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(3, 1fr);">
+                                    <p>EPiC<br>Anchor<br>Video<br></p>
+                                    <p><b>EPiC<br>Output<br>Video<br></b></p>
+                                    <p>FloVD<br>Output<br>Video<br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/flovd/flovd_qual_re10k.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        Qualitative comparison on MiraData (FloVD vs. EPiC). Video quality is comparable, while EPiC camera motion is more accurate.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(3, 1fr);">
+                                    <p>EPiC<br>Anchor<br>Video<br></p>
+                                    <p><b>EPiC<br>Output<br>Video<br></b></p>
+                                    <p>FloVD<br>Output<br>Video<br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/flovd/flovd_qual_mira9k.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        FloVD vs. EPiC Comparison of robustness to 3 different random seeds with the sample input camera trajectory.
+                                        EPiC's generated videos also have the same trajectory, while FloVD's generated videos are more varied.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(2, 1fr);">
+                                    <p>FloVD</p>
+                                    <p><b>EPiC</b><br><br><br><br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/flovd/flovd_std.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 0.5rem; text-align: center;">
+                                        <p style="margin: 0; padding: 0;">Seed 1</p>
+                                        <p style="margin: 0; padding: 0;">Seed 2</p>
+                                        <p style="margin: 0; padding: 0;">Seed 3</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="example-heading" style="margin-top: 2rem;" id="comparison-i2v-gen3c">Comparison with Gen3C</h3>
+                            <hr>
+                            <div class="hover-text">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        Comparison of EPiC and Gen3C on RealEstate10k. Video quality is comparable. Camera motion is comparable in most cases, but Gen3C failed to follow the anchor video for the 1st zoom-out example.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(3, 1fr);">
+                                    <p>EPiC<br>Anchor<br>Video<br></p>
+                                    <p><b>EPiC<br>Output<br>Video<br></b></p>
+                                    <p>Gen3C<br>Output<br>Video<br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/gen3c/gen3c_qual_re10k.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        Comparison of EPiC and Gen3C on MiraData. Gen3C's video quality is worse, especially for cases containing humans. Camera motion is comparable. Also Gen3C only generates static scenes.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(3, 1fr);">
+                                    <p>EPiC<br>Anchor<br>Video<br></p>
+                                    <p><b>EPiC<br>Output<br>Video<br></b></p>
+                                    <p>Gen3C<br>Output<br>Video<br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/gen3c/gen3c_qual_mira9k.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container is-max-desktop" style="max-width: 2500px !important;">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3" id="comparison-v2v">Comparison with Previous Methods (Video-to-Video)</h2>
+                        <br>
+                        <div class="content is-centered has-text-centered">
+                            <h3 class="example-heading" id="comparison-v2v-gen3c">Comparison with Gen3C</h3>
+                            <hr>
+                            <div class="hover-text">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        Comparison of EPiC and Gen3C on video-to-video generation with Sora videos.
+                                        Both models follow the anchor video well, but Gen3C follows too strictly, resulting in the same occlusion artifacts (foreground holes) as the anchor video for the kangaroo (2nd example) and mammoth (3rd example) while EPiC's generated videos are more natural without occlusion artifacts.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(4, 1fr);">
+                                    <p>Reference<br>Video<br></p>
+                                    <p>Anchor<br>Video<br></p>
+                                    <p><b>EPiC<br>Output<br>Video<br></b></p>
+                                    <p>Gen3C<br>Output<br>Video<br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/gen3c/gen3c_v2v_qual.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+
+                            <h3 class="example-heading" style="margin-top: 2rem;" id="comparison-v2v-trajectorycrafter">Comparison with TrajectoryCrafter</h3>
+                            <hr>
+                            <div class="hover-text">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        Comparison of EPiC and TrajectoryCrafter on video-to-video generation. TrajectoryCrafter adheres too rigidly to the anchor video and reproduces the same artifacts—visible holes in the foreground through which the background appears (mammoth example and corgi example), while EPiC's generated videos are more natural without occlusion artifacts.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(4, 1fr);">
+                                    <p>Reference<br>Video<br></p>
+                                    <p>Anchor<br>Video<br></p>
+                                    <p>TrajCrafter<br>Output<br>Video<br></p>
+                                    <p><b>EPiC<br>Output<br>Video<br></b></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/trajcrafter/trajcrafter_v2v_com.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+
+                            <h3 class="example-heading" style="margin-top: 2rem;" id="comparison-v2v-recammaster">Comparison with RecamMaster</h3>
+                            <hr>
+                            <div class="hover-text" style="text-align: left;">
+                                <div class="card-body">
+                                    <h7 class="card-title" style="text-align: left;">
+                                        Comparison of EPiC and RecamMaster on 6 examples. The camera trajectory is applied for the first 1/3 frames, and for the remaining frames, the applied camera trajectory is same as the final frame's camera trajectory of that initial segment.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        <b>suv-in-the-dust example:</b> Although the source video's camera is moving forward following the car, RecamMaster turns the camera to be static after the first 1/3 frames, and the car is not moving forward.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(2, 1fr);">
+                                    <p>Recam<br>Master</p>
+                                    <p><b>EPiC</b><br><br><br><br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/recammaster/suv-in-the-dust_grid.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 0.5rem; text-align: center;">
+                                        <p style="margin: 0; padding: 0;">Ref Video</p>
+                                        <p style="margin: 0; padding: 0;">Translation Up</p>
+                                        <p style="margin: 0; padding: 0;">Translation Down</p>
+                                        <p style="margin: 0; padding: 0;">Arc Left</p>
+                                        <p style="margin: 0; padding: 0;">Arc Right</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        <b>happy-cat example:</b> Similar to suv-in-the-dust, the source video contains camera movement, but RecamMaster fails to maintain the camera motion for the last 2/3 frames, resulting in static camera and object.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(2, 1fr);">
+                                    <p>Recam<br>Master</p>
+                                    <p><b>EPiC</b><br><br><br><br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/recammaster/happy-cat_grid.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 0.5rem; text-align: center;">
+                                        <p style="margin: 0; padding: 0;">Ref Video</p>
+                                        <p style="margin: 0; padding: 0;">Translation Up</p>
+                                        <p style="margin: 0; padding: 0;">Translation Down</p>
+                                        <p style="margin: 0; padding: 0;">Arc Left</p>
+                                        <p style="margin: 0; padding: 0;">Arc Right</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        <b>basketball-explosion example:</b> RecamMaster struggles to preserve the correct 3D structure in the arc-right case (the basketball doesn't touch the rim). In the translation-up case, it hallucinates an extra basketball and even a backboard that do not exist in the source video.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(2, 1fr);">
+                                    <p>Recam<br>Master</p>
+                                    <p><b>EPiC</b><br><br><br><br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/recammaster/basketball-explosion_grid.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 0.5rem; text-align: center;">
+                                        <p style="margin: 0; padding: 0;">Ref Video</p>
+                                        <p style="margin: 0; padding: 0;">Translation Up</p>
+                                        <p style="margin: 0; padding: 0;">Translation Down</p>
+                                        <p style="margin: 0; padding: 0;">Arc Left</p>
+                                        <p style="margin: 0; padding: 0;">Arc Right</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        <b>vlogger-corgi example:</b> RecamMaster fails to maintain the structure of the selfie stick in the arc-left and arc-right cases.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(2, 1fr);">
+                                    <p>Recam<br>Master</p>
+                                    <p><b>EPiC</b><br><br><br><br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/recammaster/vlogger-corgi_grid.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 0.5rem; text-align: center;">
+                                        <p style="margin: 0; padding: 0;">Ref Video</p>
+                                        <p style="margin: 0; padding: 0;">Translation Up</p>
+                                        <p style="margin: 0; padding: 0;">Translation Down</p>
+                                        <p style="margin: 0; padding: 0;">Arc Left</p>
+                                        <p style="margin: 0; padding: 0;">Arc Right</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        <b>photoreal-train example:</b> RecamMaster produces structural inconsistency where the bridge deck separates from the piers for all cases.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(2, 1fr);">
+                                    <p>Recam<br>Master</p>
+                                    <p><b>EPiC</b><br><br><br><br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/recammaster/photoreal-train_grid.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 0.5rem; text-align: center;">
+                                        <p style="margin: 0; padding: 0;">Ref Video</p>
+                                        <p style="margin: 0; padding: 0;">Translation Up</p>
+                                        <p style="margin: 0; padding: 0;">Translation Down</p>
+                                        <p style="margin: 0; padding: 0;">Arc Left</p>
+                                        <p style="margin: 0; padding: 0;">Arc Right</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        <b>art-museum example:</b> RecamMaster produces flickering and oil-painting-like artifacts in the generated video (translation-down, arc-right).
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(2, 1fr);">
+                                    <p>Recam<br>Master</p>
+                                    <p><b>EPiC</b><br><br><br><br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/recammaster/art-museum_grid.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 0.5rem; text-align: center;">
+                                        <p style="margin: 0; padding: 0;">Ref Video</p>
+                                        <p style="margin: 0; padding: 0;">Translation Up</p>
+                                        <p style="margin: 0; padding: 0;">Translation Down</p>
+                                        <p style="margin: 0; padding: 0;">Arc Left</p>
+                                        <p style="margin: 0; padding: 0;">Arc Right</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hover-text" style="margin-top: 2rem;">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        RecamMaster vs. EPiC Comparison on Robustness to 3 different random seeds with the sample input trajectory (Arc Left). EPiC's generated videos also have the same trajectory thanks to the explicit anchor video guidance, while RecamMaster's generated videos are more varied.
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="example-grid">
+                                <div class="text-col" style="grid-template-rows: repeat(2, 1fr);">
+                                    <p>Recam<br>Master</p>
+                                    <p><b>EPiC</b><br><br><br><br></p>
+                                </div>
+                                <div class="video-col">
+                                    <video controls muted autoplay loop>
+                                        <source src="./EPiC/com/recammaster/recammaster_std.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 0.5rem; text-align: center;">
+                                        <p style="margin: 0; padding: 0;">Ref Video</p>
+                                        <p style="margin: 0; padding: 0;">Seed 1</p>
+                                        <p style="margin: 0; padding: 0;">Seed 2</p>
+                                        <p style="margin: 0; padding: 0;">Seed 3</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="example-heading" style="margin-top: 2rem;" id="comparison-v2v-kubric">Comparison on Kubric 4D</h3>
+                            <hr>
+                            <div class="hover-text">
+                                <div class="card-body">
+                                    <h7 class="card-title">
+                                        EPiC is comparable to or better than baselines on Kubric 4D V2V, yet it is zero-shot and trained only on I2V data (GCD and Gen3C incorporate Kubric-4D training data, and TrajCrafter and ReCamMaster incorporate V2V-specific training data).
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="video-col">
+                                <video controls muted autoplay loop>
+                                    <source src="./EPiC/videos-v2v/kubric_comparison_1.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="video-col" style="margin-top: 1rem;">
+                                <video controls muted autoplay loop>
+                                    <source src="./EPiC/videos-v2v/kubric_comparison_2.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content" style="text-align: left;">
         <h2 class="title">BibTeX</h2>
         <pre><code>
-			@article{zun2025epic,
+			@inproceedings{wang2026epic,
 				author    = {Wang, Zun and Cho, Jaemin and Li, Jialu and Lin, Han and Yoon, Jaehong and Zhang, Yue and Bansal, Mohit},
-				title     = {{EPiC: Efficient Video Camera Control Learning with Precise Anchor-Video}},
-				journal   = {arXiv preprint arXiv:2505.21876},
-				year      = {2025},
+				title     = {{EPiC: Efficient Video Camera Control Learning with Precise Anchor-Video Guidance}},
+				booktitle = {ICML},
+				year      = {2026},
 				url       = {http://arxiv.org/abs/2505.21876}
-			  }			  
+			  }
         </code></pre>
     </div>
 </section>
