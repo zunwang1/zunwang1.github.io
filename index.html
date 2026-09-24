@@ -26,6 +26,22 @@
 		.news-scroll::-webkit-scrollbar-thumb:hover {
 			background: #555;
 		}
+		@media (max-width: 520px) {
+			#more-papers td {
+				padding: 8px !important;
+			}
+			#more-papers td:first-child {
+				width: 34% !important;
+			}
+			#more-papers td:last-child {
+				width: 66% !important;
+			}
+			#more-papers img {
+				width: 120px !important;
+				height: auto !important;
+				max-width: 100%;
+			}
+		}
 	</style>
 	<script>
 		function toggleAllPapers() {
@@ -80,7 +96,7 @@
                 <p style="margin-bottom: 5px;">My research goal is to build multimodal, generative, and embodied agents, with current interests in:</p>
                 <ul style="margin-top: 0; padding-left: 20px;">
                     <li>Multimodal Understanding and Generation</li>
-                    <li>Scalable Learning for Embodied Agents</li>
+                    <li>Controllable Visual World Modeling</li>
                     <li>Multimodal Data Generation and Curation</li>
                 </ul>
                 
@@ -96,6 +112,7 @@
               <div class="news-scroll">
                 <p>
                   <ul>
+                    <li>(2026-09) &nbsp Three papers accepted to NeurIPS 2026!
                     <li>(2026-06) &nbsp Four papers accepted to ECCV 2026!
                     <li>(2026-05) &nbsp Summer Intern at <img src="images/adobe.svg" alt="Adobe" style="height:14px;vertical-align:-2px;margin:0 2px;"> Adobe Research!
                     <li>(2026-04) &nbsp <a href="https://zunwang1.github.io/Epic">EPiC</a> is accepted to ICML 2026!
@@ -193,11 +210,30 @@
             <br>
             Yidong Huang*, <strong>Zun Wang*</strong>, <e>Han Lin, Dong-Ki Kim, Shayegan Omidshafiei, Jaehong Yoon, Jaemin Cho, Yue Zhang, Mohit Bansal</e>
             <br>
-          <em>Preprint, 2026</em>
+          <em>NeurIPS, 2026</em>
           <br>
           <a href="https://arxiv.org/abs/2605.14269">paper</a> /
           <a href="https://github.com/h6kplus/PhyMotion">code</a> /
           <a href="https://phy-motion.github.io/">project page</a>
+        </td>
+      </tr>
+      <tr>
+      </tbody></table>
+
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <div>
+                <img src='images/beyond-copy-paste.png' width="160" height="100">
+          </div>
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+            <papertitle>Beyond Copy-Paste: How Well Do Subject-Driven Video Models Understand Their Subjects?</papertitle>
+            <br>
+            <strong>Zun Wang</strong>, <e>Kenan Deng, Daniel Blackburn, Linlin Lu, Junbang Liang, Yu Lou, Mohit Bansal, Shan Yang</e>
+            <br>
+          <em>NeurIPS, 2026</em>
+          <br>
+          coming soon
         </td>
       </tr>
       <tr>
@@ -287,31 +323,33 @@
     </tr>
   </tbody></table>
 
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div>
+                <img src='images/traj_1.gif' width="160">
+              </div>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+                <papertitle>Bridging the Gap Between Learning in Discrete and Continuous Environments for Vision-and-Language Navigation</papertitle>
+              <br>
+              Yicong Hong*, <strong>Zun Wang*</strong>, Qi Wu, Stephen Gould
+              <br>
+              <em>CVPR</em>, 2022 </em>
+              <br>
+              <a href="https://arxiv.org/abs/2203.02764">paper</a> /
+              <a href="https://github.com/YicongHong/Discrete-Continuous-VLN">code</a>
+            </td>
+          </tr>
+
+        </tr>
+        </tbody></table>
+
       <p style="padding:0 20px 20px 20px;">
         <a id="toggle-all-papers" href="javascript:void(0)" onclick="toggleAllPapers()" style="color: #1772d0; text-decoration: none; font-weight: bold;">[full list]</a>
       </p>
       
       <div id="more-papers" style="display:none;">
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <td style="padding:20px;width:25%;vertical-align:middle">
-          <div>
-                <img src='images/same.png' width="160" height="100">
-          </div>
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-            <papertitle>SAME: Learning Generic Language-Guided Visual Navigation with State-Adaptive Mixture of Experts
-            </papertitle>
-            <br>
-            Gengze Zhou, Yicong Hong, <strong>Zun Wang</strong>, Chongyang Zhao, Mohit Bansal, Qi Wu
-            <br>
-          <em>ICCV, 2025</em>
-          <br>
-          <a href="https://arxiv.org/abs/2412.05552">paper</a> / <a href="https://github.com/GengzeZhou/SAME">code</a>
-        </td>
-      </tr>
-      <tr>
-      </tbody></table>
-
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div>
@@ -329,6 +367,125 @@
       </td>
     </tr>
     <tr>
+    </tbody></table>
+
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <img src='images/sketchverify.gif' width="160" height="100" style="object-fit:contain;">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <papertitle>Planning with Sketch-Guided Verification for Physics-Aware Video Generation</papertitle>
+          <br>
+          Yidong Huang, <strong>Zun Wang</strong>, Han Lin, Dong-Ki Kim, Shayegan Omidshafiei, Jaehong Yoon, Yue Zhang, Mohit Bansal
+          <br>
+          <em>Preprint, 2025</em>
+          <br>
+          <a href="https://arxiv.org/abs/2511.17450">paper</a> / <a href="https://github.com/h6kplus/SketchVerify">code</a> / <a href="https://sketchverify.github.io/">project page</a>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <img src='images/deer3d.png' width="160" height="100" style="object-fit:contain;">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <papertitle>Error-Driven Scene Editing for 3D Grounding in Large Language Models</papertitle>
+          <br>
+          Yue Zhang, <strong>Zun Wang</strong>, Han Lin, Jialu Li, Jianing Yang, Yonatan Bitton, Idan Szpektor, Mohit Bansal
+          <br>
+          <em>ECCV, 2026</em>
+          <br>
+          <a href="https://arxiv.org/abs/2511.14086">paper</a> / <a href="https://github.com/zhangyuejoslin/Deer-3D">code</a>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <img src='images/spatialuncertain.png' width="160" height="100" style="object-fit:contain;">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <papertitle>Seeing Isn't Knowing: Do VLMs Know When Not to Answer Spatial Questions (and Why)?</papertitle>
+          <br>
+          Yue Zhang, <strong>Zun Wang</strong>, Han Lin, Yonatan Bitton, Idan Szpektor, Mohit Bansal
+          <br>
+          <em>Preprint, 2026</em>
+          <br>
+          <a href="https://arxiv.org/abs/2605.30557">paper</a> / <a href="https://github.com/zhangyuejoslin/SpatialUncertain_code">code</a> / <a href="https://zhangyuejoslin.github.io/spatialuncertain/">project page</a>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <img src='images/vco.png' width="160" height="100" style="object-fit:contain;">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <papertitle>V-Co: A Closer Look at Visual Representation Alignment via Co-Denoising</papertitle>
+          <br>
+          Han Lin, Xichen Pan, <strong>Zun Wang</strong>, Yue Zhang, Chu Wang, Jaemin Cho, Mohit Bansal
+          <br>
+          <em>ECCV, 2026</em>
+          <br>
+          <a href="https://arxiv.org/abs/2603.16792">paper</a> / <a href="https://github.com/HL-hanlin/V-Co">code</a>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <img src='images/avic.png' width="160" height="100" style="object-fit:contain;">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <papertitle>When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning</papertitle>
+          <br>
+          Shoubin Yu*, Yue Zhang*, <strong>Zun Wang</strong>, Jaehong Yoon, Huaxiu Yao, Mingyu Ding, Mohit Bansal
+          <br>
+          <em>NeurIPS, 2026</em>
+          <br>
+          <a href="https://arxiv.org/abs/2602.08236">paper</a> / <a href="https://github.com/Yui010206/Adaptive-Visual-Imagination-Control">code</a> / <a href="https://adaptive-visual-tts.github.io/">project page</a>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <img src='images/analogical.png' width="160" height="100" style="object-fit:contain;">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <papertitle>Vision-and-Language Navigation with Analogical Textual Descriptions in LLMs</papertitle>
+          <br>
+          Yue Zhang, Tianyi Ma, <strong>Zun Wang</strong>, Yanyuan Qiao, Parisa Kordjamshidi
+          <br>
+          <em>EMNLP, 2025</em>
+          <br>
+          <a href="https://aclanthology.org/2025.emnlp-main.759/">paper</a> / <a href="https://github.com/zhangyuejoslin/VLN-Analogical-Reasoning">code</a>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <img src='images/same.png' width="160" height="100">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <papertitle>SAME: Learning Generic Language-Guided Visual Navigation with State-Adaptive Mixture of Experts</papertitle>
+          <br>
+          Gengze Zhou, Yicong Hong, <strong>Zun Wang</strong>, Chongyang Zhao, Mohit Bansal, Qi Wu
+          <br>
+          <em>ICCV, 2025</em>
+          <br>
+          <a href="https://arxiv.org/abs/2412.05552">paper</a> / <a href="https://github.com/GengzeZhou/SAME">code</a>
+        </td>
+      </tr>
     </tbody></table>
 
     <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
@@ -428,27 +585,22 @@
 
         </tr>
       </tbody></table>
-  
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr>
             <td style="padding:20px;width:25%;vertical-align:middle">
-              <div>
-                <img src='images/traj_1.gif' width="160">
-              </div>
+              <img src='images/internvideo-ego4d.png' width="160" height="100" style="object-fit:contain;">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
-                <papertitle>Bridging the Gap Between Learning in Discrete and Continuous Environments for Vision-and-Language Navigation</papertitle>
+              <papertitle>InternVideo-Ego4D: A Pack of Champion Solutions to Ego4D Challenges</papertitle>
               <br>
-              <a href="https://yiconghong.me/">Yicong Hong*</a>, <strong>Zun Wang*</strong>, <a href="http://qi-wu.me/">Qi Wu</a>, <a href="http://users.cecs.anu.edu.au/~sgould/">Stephen Gould</a>
+              Guo Chen, Sen Xing, Zhe Chen, Yi Wang, Kunchang Li, Yizhuo Li, Yi Liu, Jiahao Wang, Yin-Dong Zheng, Bingkun Huang, Zhiyu Zhao, Junting Pan, Yifei Huang, <strong>Zun Wang</strong>, Jiashuo Yu, Yinan He, Hongjie Zhang, Tong Lu, Yali Wang, Limin Wang, Yu Qiao
               <br>
-              <em>CVPR</em>, 2022 </em>
+              <em>Technical Report, 2022</em>
               <br>
-              <a href="https://arxiv.org/abs/2203.02764">paper</a> /
-              <a href="https://github.com/YicongHong/Discrete-Continuous-VLN">code</a>
+              <a href="https://arxiv.org/abs/2211.09529">paper</a> / <a href="https://github.com/OpenGVLab/EgoVideo/tree/main/eccv-2022">code</a>
             </td>
           </tr>
-
-        </tr>
         </tbody></table>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
